@@ -60,6 +60,7 @@
   const base64Text = document.getElementById("base64Text");
   const plainText = document.getElementById("plainText");
   const convertBtn = document.getElementById("convertBtn");
+  const convertLabel = document.getElementById("convertLabel");
   const copyBase64Btn = document.getElementById("copyBase64Btn");
   const copyPlainBtn = document.getElementById("copyPlainBtn");
   const clearBtn = document.getElementById("clearBtn");
@@ -105,7 +106,7 @@
     plainTitle.textContent = t("plainTitle");
     base64Text.placeholder = t("base64Placeholder");
     plainText.placeholder = t("plainPlaceholder");
-    convertBtn.textContent = t("convert");
+    convertLabel.textContent = t("convert");
     copyBase64Btn.setAttribute("aria-label", t("copyBase64"));
     copyBase64Btn.setAttribute("title", t("copyBase64"));
     copyPlainBtn.setAttribute("aria-label", t("copyPlain"));

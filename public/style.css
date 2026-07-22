@@ -133,6 +133,14 @@ textarea:focus {
 
 .convert-center #convertBtn {
   width: min(460px, 100%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.convert-arrows {
+  flex: 0 0 auto;
 }
 
 .actions {

@@ -20,7 +20,7 @@ function createTestDom(language = "ja-JP") {
         <textarea id="base64Text"></textarea>
         <h2 id="plainTitle"></h2>
         <textarea id="plainText"></textarea>
-        <button id="convertBtn" type="button"></button>
+        <button id="convertBtn" type="button"><span id="convertLabel"></span></button>
         <button id="copyBase64Btn" type="button"></button>
         <button id="copyPlainBtn" type="button"></button>
         <button id="clearBtn" type="button"></button>
