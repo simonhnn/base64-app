@@ -1,5 +1,9 @@
 const WINDOW_MS = 60 * 1000;
 const MAX_REQUESTS_PER_WINDOW = 30;
+const MAX_PLAINTEXT_LEN = 10000;
+// Prune expired entries once the tracked-IP map grows past this size so the
+// in-memory rate-limit state cannot grow without bound in a long-lived isolate.
+const PRUNE_THRESHOLD = 10000;
 const requestCounters = new Map();
 
 function corsHeaders() {
@@ -29,8 +33,21 @@ function getClientIp(request) {
   return headerValue.split(",")[0].trim();
 }
 
+function pruneExpired(now) {
+  for (const [key, record] of requestCounters) {
+    if (now - record.windowStart >= WINDOW_MS) {
+      requestCounters.delete(key);
+    }
+  }
+}
+
 function checkRateLimit(ip) {
   const now = Date.now();
+
+  if (requestCounters.size >= PRUNE_THRESHOLD) {
+    pruneExpired(now);
+  }
+
   const record = requestCounters.get(ip);
 
   if (!record || now - record.windowStart >= WINDOW_MS) {
@@ -44,6 +61,24 @@ function checkRateLimit(ip) {
 
   record.count += 1;
   return true;
+}
+
+function isValidPayload(payload) {
+  const { direction, plaintext } = payload ?? {};
+
+  if (direction !== "encode" && direction !== "decode") {
+    return "Invalid direction";
+  }
+
+  if (
+    typeof plaintext !== "string" ||
+    plaintext.length === 0 ||
+    plaintext.length > MAX_PLAINTEXT_LEN
+  ) {
+    return "Invalid plaintext length";
+  }
+
+  return null;
 }
 
 export async function onRequest(context) {
@@ -72,22 +107,16 @@ export async function onRequest(context) {
     return jsonResponse({ error: "Invalid JSON" }, 400);
   }
 
-  const direction = payload?.direction;
-  const plaintext = payload?.plaintext;
-
-  if (direction !== "encode" && direction !== "decode") {
-    return jsonResponse({ error: "Invalid direction" }, 400);
-  }
-
-  if (typeof plaintext !== "string" || plaintext.length === 0 || plaintext.length > 10000) {
-    return jsonResponse({ error: "Invalid plaintext length" }, 400);
+  const validationError = isValidPayload(payload);
+  if (validationError) {
+    return jsonResponse({ error: validationError }, 400);
   }
 
   try {
     await env.DB.prepare(
       "INSERT INTO conversion_logs (direction, plaintext) VALUES (?, ?)"
     )
-      .bind(direction, plaintext)
+      .bind(payload.direction, payload.plaintext)
       .run();
   } catch {
     return jsonResponse({ error: "DB insert failed" }, 500);

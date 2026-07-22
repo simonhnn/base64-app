@@ -146,22 +146,12 @@
     return decoder.decode(bytes);
   }
 
-  function buildLogPayload(direction, plainValue) {
+  async function logConversion(direction, plainValue) {
     if (!plainValue) {
-      return null;
+      return;
     }
-    return {
-      direction,
-      plaintext: plainValue,
-    };
-  }
 
-  function logKey(payload) {
-    return `${payload.direction}:${payload.plaintext}`;
-  }
-
-  async function sendLog(payload) {
-    const key = logKey(payload);
+    const key = `${direction}:${plainValue}`;
     if (sentLogKeys.has(key)) {
       return;
     }
@@ -172,7 +162,7 @@
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({ direction, plaintext: plainValue }),
         keepalive: true,
       });
 
@@ -212,17 +202,11 @@
       if (lastEdited === "base64" && hasBase64) {
         const plainValue = decodeBase64ToUtf8(base64Text.value);
         plainText.value = plainValue;
-        const payload = buildLogPayload("decode", plainValue);
-        if (payload) {
-          await sendLog(payload);
-        }
+        await logConversion("decode", plainValue);
       } else {
         const base64Value = encodeUtf8ToBase64(plainText.value);
         base64Text.value = base64Value;
-        const payload = buildLogPayload("encode", plainText.value);
-        if (payload) {
-          await sendLog(payload);
-        }
+        await logConversion("encode", plainText.value);
       }
       setStatus(t("converted"), false);
     } catch {

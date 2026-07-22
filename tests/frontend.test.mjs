@@ -17,10 +17,8 @@ function createTestDom(language = "ja-JP") {
         <h1 id="appTitle"></h1>
         <p id="appDescription"></p>
         <h2 id="base64Title"></h2>
-        <p id="base64Count"></p>
         <textarea id="base64Text"></textarea>
         <h2 id="plainTitle"></h2>
-        <p id="plainCount"></p>
         <textarea id="plainText"></textarea>
         <button id="convertBtn" type="button"></button>
         <button id="copyBase64Btn" type="button"></button>
@@ -133,6 +131,84 @@ describe("フロント変換処理", () => {
     const payload = JSON.parse(fetchCalls[0].options.body);
     expect(payload.direction).to.equal("encode");
     expect(payload.plaintext).to.equal(uniquePlaintext);
+  });
+
+  it("コピーアイコン押下で平文がクリップボードへ書き込まれる", async () => {
+    const plain = document.getElementById("plainText");
+    const copyPlainBtn = document.getElementById("copyPlainBtn");
+    const status = document.getElementById("statusMessage");
+    let copied = null;
+    globalThis.navigator.clipboard.writeText = async (value) => {
+      copied = value;
+    };
+
+    plain.value = "コピー対象";
+    copyPlainBtn.click();
+    await new Promise((resolve) => setTimeout(resolve, 0));
+
+    expect(copied).to.equal("コピー対象");
+    expect(status.textContent).to.equal("平文をコピーしました。");
+  });
+
+  it("入力が空の状態でコピー押下時は未入力エラーになる", async () => {
+    const copyPlainBtn = document.getElementById("copyPlainBtn");
+    const status = document.getElementById("statusMessage");
+
+    copyPlainBtn.click();
+    await new Promise((resolve) => setTimeout(resolve, 0));
+
+    expect(status.textContent).to.equal("Base64 か平文のどちらかを入力してください。");
+  });
+
+  it("クリアボタンで両方の入力欄が空になる", () => {
+    const plain = document.getElementById("plainText");
+    const base64 = document.getElementById("base64Text");
+    const clearBtn = document.getElementById("clearBtn");
+    const status = document.getElementById("statusMessage");
+
+    plain.value = "テキスト";
+    base64.value = "eA==";
+    clearBtn.click();
+
+    expect(plain.value).to.equal("");
+    expect(base64.value).to.equal("");
+    expect(status.textContent).to.equal("入力と出力をクリアしました。");
+  });
+
+  it("Base64も平文も未入力で変換押下時はエラー表示になる", () => {
+    const convertBtn = document.getElementById("convertBtn");
+    const status = document.getElementById("statusMessage");
+
+    convertBtn.click();
+
+    expect(status.textContent).to.equal("Base64 か平文のどちらかを入力してください。");
+  });
+
+  it("入力上限を超えた状態で変換押下時はエラー表示になる", () => {
+    const plain = document.getElementById("plainText");
+    const convertBtn = document.getElementById("convertBtn");
+    const status = document.getElementById("statusMessage");
+
+    plain.value = "a".repeat(10001);
+    plain.dispatchEvent(new Event("input", { bubbles: true }));
+    convertBtn.click();
+
+    expect(status.textContent).to.equal("入力上限（10,000 文字）に達しています。");
+  });
+
+  it("同一の平文を連続変換してもログ送信は1回だけ", async () => {
+    const plain = document.getElementById("plainText");
+    const convertBtn = document.getElementById("convertBtn");
+
+    plain.value = "重複テスト";
+    plain.dispatchEvent(new Event("input", { bubbles: true }));
+
+    convertBtn.click();
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    convertBtn.click();
+    await new Promise((resolve) => setTimeout(resolve, 0));
+
+    expect(fetchCalls.length).to.equal(1);
   });
 
   it("ブラウザが日本語以外なら英語表示になる", async () => {
