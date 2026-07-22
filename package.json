@@ -1,0 +1,27 @@
+{
+  "name": "base64-app",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "テキストと Base64 を相互変換するシンプルなウェブアプリです。  \r 変換処理はすべてブラウザ内で完結し、サーバーにはログ収集のみを送信します。",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha \"tests/**/*.test.mjs\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://simonhnn@github.com/simonhnn/base64-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/simonhnn/base64-app/issues"
+  },
+  "homepage": "https://github.com/simonhnn/base64-app#readme",
+  "devDependencies": {
+    "chai": "^4.3.10",
+    "jsdom": "^21.1.2",
+    "mocha": "^10.2.0",
+    "node-fetch": "^2.7.0"
+  }
+}

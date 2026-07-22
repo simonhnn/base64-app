@@ -1,0 +1,8 @@
+name = "base64-app"
+compatibility_date = "2026-07-22"
+pages_build_output_dir = "public"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "base64-app-db"
+database_id = "cf2853cd-9447-4b7a-861e-bcfd847873e0"

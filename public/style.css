@@ -1,0 +1,204 @@
+:root {
+  color-scheme: light dark;
+  --bg: #f4f6f8;
+  --surface: #ffffff;
+  --text: #111827;
+  --muted: #4b5563;
+  --border: #d1d5db;
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --primary-text: #ffffff;
+  --danger: #b91c1c;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b1220;
+    --surface: #111827;
+    --text: #f3f4f6;
+    --muted: #9ca3af;
+    --border: #374151;
+    --primary: #3b82f6;
+    --primary-hover: #60a5fa;
+    --primary-text: #ffffff;
+    --danger: #f87171;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  font-family: "Segoe UI", "Hiragino Sans", "Yu Gothic UI", "Meiryo", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.container {
+  width: min(900px, 100% - 2rem);
+  margin: 2rem auto;
+  padding: 1.2rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: clamp(1.35rem, 2vw, 1.8rem);
+}
+
+.header p {
+  margin: 0.4rem 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.panel {
+  margin-top: 1rem;
+}
+
+.panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+h2 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.panel-body {
+  display: flex;
+  flex-direction: column;
+}
+
+textarea {
+  width: 100%;
+  margin-top: 0.45rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.75rem;
+  color: var(--text);
+  background: var(--surface);
+  font: 400 0.94rem/1.55 Consolas, "BIZ UD Gothic", monospace;
+  resize: vertical;
+}
+
+textarea::placeholder {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+textarea:focus {
+  outline: 2px solid color-mix(in srgb, var(--primary) 40%, transparent 60%);
+  border-color: var(--primary);
+}
+
+.panel-tools {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.45rem;
+  margin-top: 0.55rem;
+}
+
+.convert-center {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.convert-center #convertBtn {
+  width: min(460px, 100%);
+}
+
+.actions {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.actions-main {
+  margin-top: 1rem;
+  justify-content: flex-end;
+}
+
+button {
+  border: 1px solid var(--primary);
+  background: var(--primary);
+  color: var(--primary-text);
+  border-radius: 8px;
+  padding: 0.5rem 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--primary-hover);
+  border-color: var(--primary-hover);
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--primary) 72%, transparent 28%);
+  outline-offset: 2px;
+}
+
+button.secondary {
+  border-color: var(--border);
+  background: var(--surface);
+  color: var(--text);
+}
+
+button.secondary:hover {
+  background: color-mix(in srgb, var(--surface) 88%, var(--text) 12%);
+  border-color: var(--muted);
+}
+
+.status {
+  min-height: 1.5rem;
+  margin: 0.9rem 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.status.error {
+  color: var(--danger);
+}
+
+.footer-links {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.footer-links a {
+  color: var(--primary);
+}
+
+@media (max-width: 640px) {
+  .container {
+    width: min(900px, 100% - 1rem);
+    margin: 0.9rem auto;
+    padding: 0.9rem;
+  }
+
+  .panel-head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .panel-tools,
+  .actions {
+    width: 100%;
+  }
+
+  .panel-tools button,
+  .actions button {
+    flex: 1;
+  }
+}

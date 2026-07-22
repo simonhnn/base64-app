@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Base64 変換ツール</title>
+    <meta
+      name="description"
+      content="テキストと Base64 を相互変換する無料ツールです。変換処理はブラウザで行います。"
+    />
+    <meta name="robots" content="index,follow" />
+    <meta name="author" content="Base64 App" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#e7eef7" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#101726" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Base64 変換ツール" />
+    <meta
+      property="og:description"
+      content="テキストと Base64 を相互変換する無料ツールです。変換処理はブラウザで行います。"
+    />
+    <meta property="og:url" content="https://base64-app.pages.dev/" />
+    <meta property="og:site_name" content="Base64 変換ツール" />
+    <meta property="og:image" content="https://base64-app.pages.dev/og-image.svg" />
+    <meta property="og:image:alt" content="Base64 変換ツールの紹介画像" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta name="twitter:title" content="Base64 変換ツール" />
+    <meta
+      name="twitter:description"
+      content="テキストと Base64 を相互変換する無料ツールです。変換処理はブラウザで行います。"
+    />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="https://base64-app.pages.dev/og-image.svg" />
+    <link rel="canonical" href="https://base64-app.pages.dev/" />
+    <link rel="alternate" hreflang="ja" href="https://base64-app.pages.dev/" />
+    <link rel="alternate" hreflang="en" href="https://base64-app.pages.dev/" />
+    <link rel="alternate" hreflang="x-default" href="https://base64-app.pages.dev/" />
+    <link rel="stylesheet" href="/style.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Base64 変換ツール",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "url": "https://base64-app.pages.dev/",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "JPY"
+        },
+        "browserRequirements": "JavaScript",
+        "creator": {
+          "@type": "Organization",
+          "name": "Base64 App"
+        },
+        "inLanguage": ["ja", "en"],
+        "description": "テキストと Base64 を相互変換する無料ツールです。変換処理はブラウザで行います。"
+      }
+    </script>
+  </head>
+  <body>
+    <main class="container">
+      <header class="header">
+        <h1 id="appTitle">Base64 変換ツール</h1>
+        <p id="appDescription">変換処理はブラウザで行います。</p>
+      </header>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h2 id="base64Title">Base64</h2>
+        </div>
+        <div class="panel-body">
+          <textarea
+            id="base64Text"
+            rows="8"
+            maxlength="10000"
+            placeholder="ここに【Base64】を入力"
+            aria-describedby="statusMessage"
+          ></textarea>
+          <div class="panel-tools">
+            <button id="pasteBase64Btn" type="button" class="secondary">貼り付け</button>
+            <button id="copyBase64Btn" type="button" class="secondary">Base64 をコピー</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="convert-center">
+        <button id="convertBtn" type="button">変換</button>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h2 id="plainTitle">平文</h2>
+        </div>
+        <div class="panel-body">
+          <textarea id="plainText" rows="8" maxlength="10000" placeholder="ここに【平文】を入力"></textarea>
+          <div class="panel-tools">
+            <button id="pastePlainBtn" type="button" class="secondary">貼り付け</button>
+            <button id="copyPlainBtn" type="button" class="secondary">平文をコピー</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="actions actions-main">
+        <button id="clearBtn" type="button" class="secondary">クリア</button>
+      </section>
+
+      <p id="statusMessage" class="status" role="status" aria-live="polite"></p>
+
+      <footer class="footer-links">
+        <a id="howToLink" href="/how-to-use.html">使い方</a>
+        <a id="privacyLink" href="/privacy.html">プライバシーポリシー</a>
+      </footer>
+    </main>
+
+    <script src="/app.js" defer></script>
+  </body>
+</html>

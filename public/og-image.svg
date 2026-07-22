@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Base64 変換ツール</title>
+  <desc id="desc">テキストとBase64を相互変換できる無料ツール</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1024" />
+      <stop offset="100%" stop-color="#1f4b99" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <rect x="64" y="64" width="1072" height="502" rx="28" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.28)" />
+  <text x="110" y="250" fill="#ffffff" font-family="'Segoe UI', 'Noto Sans JP', sans-serif" font-size="82" font-weight="700">Base64 変換ツール</text>
+  <text x="110" y="336" fill="#dbeafe" font-family="'Segoe UI', 'Noto Sans JP', sans-serif" font-size="40" font-weight="500">テキスト ⇄ Base64 を高速変換</text>
+  <text x="110" y="412" fill="#bfdbfe" font-family="'Segoe UI', 'Noto Sans JP', sans-serif" font-size="30">ブラウザで処理 / 無料 / 日本語・英語対応</text>
+  <text x="110" y="498" fill="#93c5fd" font-family="'Segoe UI', sans-serif" font-size="28">base64-app.pages.dev</text>
+</svg>
