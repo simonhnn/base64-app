@@ -14,7 +14,6 @@
       convert: "変換",
       copyBase64: "Base64 をコピー",
       copyPlain: "平文をコピー",
-      paste: "貼り付け",
       clear: "クリア",
       howTo: "使い方",
       privacy: "プライバシーポリシー",
@@ -24,9 +23,7 @@
       invalidBase64: "Base64 の形式が正しくありません。",
       copyBase64Done: "Base64 をコピーしました。",
       copyPlainDone: "平文をコピーしました。",
-      pasted: "貼り付けました。",
       copyFailed: "クリップボードへのコピーに失敗しました。",
-      pasteFailed: "クリップボードからの貼り付けに失敗しました。",
       cleared: "入力と出力をクリアしました。",
     },
     en: {
@@ -42,7 +39,6 @@
       convert: "Convert",
       copyBase64: "Copy Base64",
       copyPlain: "Copy plain text",
-      paste: "Paste",
       clear: "Clear",
       howTo: "How to use",
       privacy: "Privacy policy",
@@ -52,9 +48,7 @@
       invalidBase64: "Invalid Base64 format.",
       copyBase64Done: "Base64 copied.",
       copyPlainDone: "Plain text copied.",
-      pasted: "Pasted.",
       copyFailed: "Failed to copy to clipboard.",
-      pasteFailed: "Failed to paste from clipboard.",
       cleared: "Input and output have been cleared.",
     },
   };
@@ -67,9 +61,7 @@
   const plainText = document.getElementById("plainText");
   const convertBtn = document.getElementById("convertBtn");
   const copyBase64Btn = document.getElementById("copyBase64Btn");
-  const pasteBase64Btn = document.getElementById("pasteBase64Btn");
   const copyPlainBtn = document.getElementById("copyPlainBtn");
-  const pastePlainBtn = document.getElementById("pastePlainBtn");
   const clearBtn = document.getElementById("clearBtn");
   const howToLink = document.getElementById("howToLink");
   const privacyLink = document.getElementById("privacyLink");
@@ -114,10 +106,10 @@
     base64Text.placeholder = t("base64Placeholder");
     plainText.placeholder = t("plainPlaceholder");
     convertBtn.textContent = t("convert");
-    copyBase64Btn.textContent = t("copyBase64");
-    pasteBase64Btn.textContent = t("paste");
-    copyPlainBtn.textContent = t("copyPlain");
-    pastePlainBtn.textContent = t("paste");
+    copyBase64Btn.setAttribute("aria-label", t("copyBase64"));
+    copyBase64Btn.setAttribute("title", t("copyBase64"));
+    copyPlainBtn.setAttribute("aria-label", t("copyPlain"));
+    copyPlainBtn.setAttribute("title", t("copyPlain"));
     clearBtn.textContent = t("clear");
     howToLink.textContent = t("howTo");
     privacyLink.textContent = t("privacy");
@@ -252,17 +244,6 @@
     }
   }
 
-  async function pasteTo(target) {
-    try {
-      const text = await navigator.clipboard.readText();
-      target.value = text.slice(0, MAX_LEN);
-      lastEdited = target === base64Text ? "base64" : "plain";
-      setStatus(t("pasted"), false);
-    } catch {
-      setStatus(t("pasteFailed"), true);
-    }
-  }
-
   function clearAll() {
     base64Text.value = "";
     plainText.value = "";
@@ -281,9 +262,7 @@
 
   convertBtn.addEventListener("click", handleConvert);
   copyBase64Btn.addEventListener("click", () => copyText(base64Text.value, t("copyBase64Done")));
-  pasteBase64Btn.addEventListener("click", () => pasteTo(base64Text));
   copyPlainBtn.addEventListener("click", () => copyText(plainText.value, t("copyPlainDone")));
-  pastePlainBtn.addEventListener("click", () => pasteTo(plainText));
   clearBtn.addEventListener("click", clearAll);
 
   applyLanguage();

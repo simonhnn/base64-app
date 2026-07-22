@@ -70,16 +70,20 @@
           <h2 id="base64Title">Base64</h2>
         </div>
         <div class="panel-body">
-          <textarea
-            id="base64Text"
-            rows="8"
-            maxlength="10000"
-            placeholder="ここに【Base64】を入力"
-            aria-describedby="statusMessage"
-          ></textarea>
-          <div class="panel-tools">
-            <button id="pasteBase64Btn" type="button" class="secondary">貼り付け</button>
-            <button id="copyBase64Btn" type="button" class="secondary">Base64 をコピー</button>
+          <div class="textarea-wrap">
+            <textarea
+              id="base64Text"
+              rows="8"
+              maxlength="10000"
+              placeholder="ここに【Base64】を入力"
+              aria-describedby="statusMessage"
+            ></textarea>
+            <button id="copyBase64Btn" type="button" class="copy-icon" aria-label="Base64 をコピー" title="Base64 をコピー">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <rect x="9" y="9" width="11" height="11" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+            </button>
           </div>
         </div>
       </section>
@@ -93,10 +97,14 @@
           <h2 id="plainTitle">平文</h2>
         </div>
         <div class="panel-body">
-          <textarea id="plainText" rows="8" maxlength="10000" placeholder="ここに【平文】を入力"></textarea>
-          <div class="panel-tools">
-            <button id="pastePlainBtn" type="button" class="secondary">貼り付け</button>
-            <button id="copyPlainBtn" type="button" class="secondary">平文をコピー</button>
+          <div class="textarea-wrap">
+            <textarea id="plainText" rows="8" maxlength="10000" placeholder="ここに【平文】を入力"></textarea>
+            <button id="copyPlainBtn" type="button" class="copy-icon" aria-label="平文をコピー" title="平文をコピー">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <rect x="9" y="9" width="11" height="11" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+            </button>
           </div>
         </div>
       </section>

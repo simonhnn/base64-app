@@ -24,9 +24,7 @@ function createTestDom(language = "ja-JP") {
         <textarea id="plainText"></textarea>
         <button id="convertBtn" type="button"></button>
         <button id="copyBase64Btn" type="button"></button>
-        <button id="pasteBase64Btn" type="button"></button>
         <button id="copyPlainBtn" type="button"></button>
-        <button id="pastePlainBtn" type="button"></button>
         <button id="clearBtn" type="button"></button>
         <a id="howToLink" href="/how-to-use.html"></a>
         <a id="privacyLink" href="/privacy.html"></a>
