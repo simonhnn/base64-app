@@ -250,5 +250,113 @@
   copyPlainBtn.addEventListener("click", () => copyText(plainText.value, t("copyPlainDone")));
   clearBtn.addEventListener("click", clearAll);
 
+  function toolResult(text) {
+    return { content: [{ type: "text", text: String(text) }] };
+  }
+
+  // AI エージェント向けに WebMCP ツールを公開する（navigator.modelContext）。
+  // 未対応環境では何もしない。
+  function registerWebMcpTools() {
+    const mc = typeof navigator !== "undefined" ? navigator.modelContext : undefined;
+    if (!mc) {
+      return;
+    }
+
+    const tools = [
+      {
+        name: "encode_to_base64",
+        description:
+          "平文テキストを Base64 にエンコードします。画面の入力欄にも反映し、エンコード結果の Base64 文字列を返します。",
+        inputSchema: {
+          type: "object",
+          properties: {
+            text: {
+              type: "string",
+              description: "エンコードする平文テキスト。",
+              maxLength: MAX_LEN,
+            },
+          },
+          required: ["text"],
+          additionalProperties: false,
+        },
+        async execute({ text }) {
+          if (typeof text !== "string" || text.length === 0) {
+            return toolResult(t("noInput"));
+          }
+          if (text.length > MAX_LEN) {
+            return toolResult(t("inputLimit"));
+          }
+          base64Text.value = "";
+          plainText.value = text;
+          lastEdited = "plain";
+          await handleConvert();
+          return toolResult(
+            statusMessage.classList.contains("error")
+              ? statusMessage.textContent
+              : base64Text.value
+          );
+        },
+      },
+      {
+        name: "decode_from_base64",
+        description:
+          "Base64 文字列を平文テキストにデコードします。画面の入力欄にも反映し、デコード結果の平文を返します。形式が不正な場合はエラーメッセージを返します。",
+        inputSchema: {
+          type: "object",
+          properties: {
+            base64: {
+              type: "string",
+              description: "デコードする Base64 文字列。",
+              maxLength: MAX_LEN,
+            },
+          },
+          required: ["base64"],
+          additionalProperties: false,
+        },
+        async execute({ base64 }) {
+          if (typeof base64 !== "string" || base64.length === 0) {
+            return toolResult(t("noInput"));
+          }
+          if (base64.length > MAX_LEN) {
+            return toolResult(t("inputLimit"));
+          }
+          plainText.value = "";
+          base64Text.value = base64;
+          lastEdited = "base64";
+          await handleConvert();
+          return toolResult(
+            statusMessage.classList.contains("error")
+              ? statusMessage.textContent
+              : plainText.value
+          );
+        },
+      },
+      {
+        name: "clear_all",
+        description: "Base64 と平文の両方の入力欄を消去します。",
+        inputSchema: {
+          type: "object",
+          properties: {},
+          additionalProperties: false,
+        },
+        async execute() {
+          clearAll();
+          return toolResult(t("cleared"));
+        },
+      },
+    ];
+
+    try {
+      if (typeof mc.registerTool === "function") {
+        tools.forEach((tool) => mc.registerTool(tool));
+      } else if (typeof mc.provideContext === "function") {
+        mc.provideContext({ tools });
+      }
+    } catch {
+      // 未対応・API差異は黙って無視する
+    }
+  }
+
   applyLanguage();
+  registerWebMcpTools();
 })();

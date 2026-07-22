@@ -224,4 +224,31 @@ describe("フロント変換処理", () => {
     expect(title.textContent).to.equal("Base64 Converter");
     expect(convertBtn.textContent).to.equal("Convert");
   });
+
+  it("WebMCP対応環境ではツールが登録され実行できる", async () => {
+    createTestDom("ja-JP");
+    fetchCalls = [];
+    globalThis.fetch = async () => ({ ok: true });
+
+    const registered = [];
+    globalThis.navigator.modelContext = {
+      registerTool: (tool) => registered.push(tool),
+    };
+
+    await import(`${appFileUrl}?test=${Date.now()}-mcp`);
+
+    const names = registered.map((tool) => tool.name);
+    expect(names).to.include.members([
+      "encode_to_base64",
+      "decode_from_base64",
+      "clear_all",
+    ]);
+
+    const encodeTool = registered.find((tool) => tool.name === "encode_to_base64");
+    expect(encodeTool.inputSchema.type).to.equal("object");
+    expect(encodeTool.inputSchema.required).to.deep.equal(["text"]);
+
+    const result = await encodeTool.execute({ text: "A" });
+    expect(result.content[0].text).to.equal("QQ==");
+  });
 });
