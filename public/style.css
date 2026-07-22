@@ -41,9 +41,7 @@ body {
   width: min(900px, 100% - 2rem);
   margin: 2rem auto;
   padding: 1.2rem;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 12px;
+  background: transparent;
 }
 
 .header h1 {
@@ -87,7 +85,7 @@ textarea {
   color: var(--text);
   background: var(--surface);
   font: 400 0.94rem/1.55 Consolas, "BIZ UD Gothic", monospace;
-  resize: vertical;
+  resize: none;
 }
 
 textarea::placeholder {
