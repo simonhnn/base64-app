@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#e7eef7" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#101726" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>Base64 とは？よくある質問（FAQ）と解説 | Base64 変換ツール</title>
+    <meta
+      name="description"
+      content="Base64 とは何か、仕組み・用途・注意点をわかりやすく解説。エンコード/デコードの意味、データURIやBasic認証での使い方、暗号化との違いなど、よくある質問にまとめて回答します。"
+    />
+    <meta name="robots" content="index,follow" />
+    <meta name="google-site-verification" content="77MztDN2EmCFP3QrmE3aG4WmQ941w2QQJwKbZX2R0nE" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Base64 とは？よくある質問（FAQ）と解説" />
+    <meta
+      property="og:description"
+      content="Base64 の仕組み・用途・注意点をわかりやすく解説。よくある質問にまとめて回答します。"
+    />
+    <meta property="og:url" content="https://base64-app-2he.pages.dev/faq.html" />
+    <meta property="og:site_name" content="Base64 変換ツール" />
+    <meta property="og:image" content="https://base64-app-2he.pages.dev/og-image.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Base64 変換ツールの紹介画像" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Base64 とは？よくある質問（FAQ）と解説" />
+    <meta
+      name="twitter:description"
+      content="Base64 の仕組み・用途・注意点をわかりやすく解説。よくある質問にまとめて回答します。"
+    />
+    <meta name="twitter:image" content="https://base64-app-2he.pages.dev/og-image.jpg" />
+    <meta name="twitter:image:alt" content="Base64 変換ツールの紹介画像" />
+    <link rel="canonical" href="https://base64-app-2he.pages.dev/faq.html" />
+    <link rel="alternate" hreflang="ja" href="https://base64-app-2he.pages.dev/faq.html" />
+    <link rel="alternate" hreflang="en" href="https://base64-app-2he.pages.dev/en/faq.html" />
+    <link rel="alternate" hreflang="x-default" href="https://base64-app-2he.pages.dev/faq.html" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Base64 変換ツール",
+            "item": "https://base64-app-2he.pages.dev/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "FAQ・解説",
+            "item": "https://base64-app-2he.pages.dev/faq.html"
+          }
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Base64 とは何ですか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Base64 は、あらゆるバイナリデータ（画像や任意のバイト列）を、英数字と「+」「/」「=」の64種類の文字だけで表現するエンコード方式です。テキストしか扱えない経路でもデータを安全に運べるようにするための「変換ルール」であり、暗号化ではありません。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "エンコードとデコードの違いは何ですか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "エンコードは元のデータを Base64 文字列へ変換すること、デコードは Base64 文字列を元のデータへ戻すことです。当ツールでは最後に編集した欄を自動判定し、平文を入力すればエンコード、Base64 を入力すればデコードを行います。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Base64 は暗号化やセキュリティ対策になりますか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "なりません。Base64 は誰でも元に戻せる可逆的な変換で、秘密鍵もありません。パスワードや機密情報を Base64 にしても保護されないため、機密性が必要な場合は AES などの暗号化を使用してください。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Base64 はどんな場面で使われますか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "電子メールの添付ファイル（MIME）、HTML/CSS に画像を直接埋め込むデータURI、HTTP の Basic 認証ヘッダー、JSON や XML へのバイナリ埋め込み、JWT の各パートのエンコードなど、テキストとしてデータを扱いたい場面で広く使われます。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Base64 にすると文字数（サイズ）はどれくらい増えますか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Base64 は3バイトを4文字で表現するため、データ量はおよそ1.33倍（約33%増）になります。改行やパディングを含めるとわずかに増えます。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "末尾の「=」は何ですか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "「=」はパディング文字で、元データの長さが3の倍数でないときに出力を4文字単位に揃えるために付きます。データの一部ではなく、桁合わせの記号です。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "URL-safe Base64 とは何ですか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "通常の Base64 で使う「+」と「/」は URL やファイル名で特別な意味を持つため、それぞれ「-」と「_」に置き換えたものが URL-safe Base64 です。JWT などで使われます。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "入力したデータはサーバーに送信されますか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "変換処理そのものはすべてブラウザ内（クライアントサイド）で完結し、変換のためにデータを外部へ送信することはありません。詳しい取り扱いはプライバシーポリシーをご確認ください。"
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <main class="container">
+      <header class="header">
+        <h1>Base64 とは？よくある質問（FAQ）と解説</h1>
+        <p>Base64 の仕組み・用途・注意点を、初めての方にもわかりやすくまとめました。</p>
+      </header>
+
+      <section class="panel content">
+        <h2>Base64 の基礎</h2>
+        <p>
+          <strong>Base64</strong> は、画像や任意のバイト列といったバイナリデータを、
+          アルファベット（A–Z / a–z）、数字（0–9）、記号（<code>+</code>・<code>/</code>）の
+          <strong>64 種類の文字</strong>と、桁合わせの <code>=</code> だけで表現するエンコード方式です。
+          テキストしか通せない通信経路や保存形式でも、データが壊れずに運べるようにするための
+          「共通の変換ルール」だと考えるとわかりやすいです。
+        </p>
+        <p>
+          仕組みはシンプルで、元データを <strong>3 バイト（24 ビット）</strong>ずつ区切り、
+          それを <strong>6 ビット × 4 個</strong>に分け直して、各 6 ビットを 1 文字に対応させます。
+          例として「<code>Hello</code>」をエンコードすると「<code>SGVsbG8=</code>」になります。
+        </p>
+      </section>
+
+      <section class="panel content">
+        <h2>主な用途</h2>
+        <ul>
+          <li><strong>メール添付（MIME）</strong>：バイナリの添付ファイルをテキストとして送るため。</li>
+          <li><strong>データURI</strong>：HTML/CSS に小さな画像やフォントを直接埋め込むため。</li>
+          <li><strong>Basic 認証</strong>：ユーザー名とパスワードを HTTP ヘッダーに載せる際の符号化。</li>
+          <li><strong>JSON / XML への埋め込み</strong>：構造化テキスト内にバイナリを含めるため。</li>
+          <li><strong>JWT（トークン）</strong>：各パートを URL-safe Base64 で表現。</li>
+        </ul>
+      </section>
+
+      <section class="panel content">
+        <h2>よくある質問（FAQ）</h2>
+
+        <h3>Base64 は暗号化ですか？</h3>
+        <p>
+          いいえ。Base64 は<strong>誰でも元に戻せる可逆変換</strong>で、秘密鍵もありません。
+          パスワードや個人情報を Base64 化しても保護にはならないため、機密性が必要なら
+          AES などの暗号化を併用してください。
+        </p>
+
+        <h3>Base64 にするとどれくらいサイズが増えますか？</h3>
+        <p>
+          3 バイトを 4 文字で表すため、データ量は<strong>およそ 1.33 倍（約 33% 増）</strong>です。
+          改行やパディングを含めるとわずかに増えます。
+        </p>
+
+        <h3>末尾の「=」は何ですか？</h3>
+        <p>
+          <code>=</code> は<strong>パディング</strong>で、元データの長さが 3 の倍数でないときに、
+          出力を 4 文字単位に揃えるために付きます。データそのものではなく桁合わせの記号です。
+        </p>
+
+        <h3>URL-safe Base64 との違いは？</h3>
+        <p>
+          URL やファイル名で意味を持ってしまう <code>+</code> と <code>/</code> を、
+          それぞれ <code>-</code> と <code>_</code> に置き換えたものが URL-safe Base64 です。
+          JWT などで使われます。
+        </p>
+
+        <h3>デコードに失敗するのはなぜ？</h3>
+        <p>
+          入力が Base64 の形式（4 文字単位・使用文字・パディング）に沿っていない場合や、
+          UTF-8 として不正なバイト列になる場合にエラーになります。余計な空白や欠損がないか確認してください。
+        </p>
+
+        <h3>入力データはどこかに送信されますか？</h3>
+        <p>
+          変換処理は<strong>すべてブラウザ内で完結</strong>し、変換のためにデータを外部送信することはありません。
+          詳細は<a href="/privacy.html">プライバシーポリシー</a>をご覧ください。
+        </p>
+      </section>
+
+      <section class="convert-center">
+        <a class="cta-link" href="/">Base64 変換ツールを使う</a>
+      </section>
+
+      <aside class="ad-slot" aria-label="広告">
+        <!-- BEGIN AADS AD UNIT 2448808 -->
+        <div id="frame" style="width: 100%;margin: auto;position: relative; z-index: 99998;">
+          <iframe data-aa='2448808' src='//acceptable.a-ads.com/2448808/?size=Adaptive' title='広告'
+                            style='border:0; padding:0; width:70%; height:auto; overflow:hidden;display: block;margin: auto'></iframe>
+        </div>
+        <!-- END AADS AD UNIT 2448808 -->
+      </aside>
+
+      <footer class="footer-links">
+        <a href="/">トップへ戻る</a>
+        <a href="/how-to-use.html">使い方</a>
+        <a href="/privacy.html">プライバシーポリシー</a>
+        <a href="/en/faq.html" hreflang="en" lang="en">English</a>
+      </footer>
+    </main>
+  </body>
+</html>

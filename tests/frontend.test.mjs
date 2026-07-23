@@ -225,6 +225,21 @@ describe("フロント変換処理", () => {
     expect(convertBtn.textContent).to.equal("Convert");
   });
 
+  it("ページのlang宣言がブラウザ言語より優先される（URL分離用）", async () => {
+    // 日本語ブラウザでも、英語ページ(lang=en)なら英語表示になる
+    createTestDom("ja-JP");
+    document.documentElement.lang = "en";
+    fetchCalls = [];
+    globalThis.fetch = async () => ({ ok: true });
+
+    await import(`${appFileUrl}?test=${Date.now()}-langattr`);
+
+    const title = document.getElementById("appTitle");
+    const convertBtn = document.getElementById("convertBtn");
+    expect(title.textContent).to.equal("Base64 Converter");
+    expect(convertBtn.textContent).to.equal("Convert");
+  });
+
   it("WebMCP対応環境ではツールが登録され実行できる", async () => {
     createTestDom("ja-JP");
     fetchCalls = [];

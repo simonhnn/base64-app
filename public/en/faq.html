@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#e7eef7" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#101726" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>What is Base64? FAQ and guide | Base64 Converter</title>
+    <meta
+      name="description"
+      content="What Base64 is, how it works, its uses and caveats, explained simply. The meaning of encoding/decoding, use in data URIs and Basic auth, and the difference from encryption."
+    />
+    <meta name="robots" content="index,follow" />
+    <meta name="google-site-verification" content="77MztDN2EmCFP3QrmE3aG4WmQ941w2QQJwKbZX2R0nE" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="What is Base64? FAQ and guide" />
+    <meta
+      property="og:description"
+      content="How Base64 works, its uses and caveats, explained simply. Answers to common questions."
+    />
+    <meta property="og:url" content="https://base64-app-2he.pages.dev/en/faq.html" />
+    <meta property="og:site_name" content="Base64 Converter" />
+    <meta property="og:image" content="https://base64-app-2he.pages.dev/og-image.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Base64 Converter preview image" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="ja_JP" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="What is Base64? FAQ and guide" />
+    <meta
+      name="twitter:description"
+      content="How Base64 works, its uses and caveats, explained simply. Answers to common questions."
+    />
+    <meta name="twitter:image" content="https://base64-app-2he.pages.dev/og-image.jpg" />
+    <meta name="twitter:image:alt" content="Base64 Converter preview image" />
+    <link rel="canonical" href="https://base64-app-2he.pages.dev/en/faq.html" />
+    <link rel="alternate" hreflang="en" href="https://base64-app-2he.pages.dev/en/faq.html" />
+    <link rel="alternate" hreflang="ja" href="https://base64-app-2he.pages.dev/faq.html" />
+    <link rel="alternate" hreflang="x-default" href="https://base64-app-2he.pages.dev/faq.html" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Base64 Converter",
+            "item": "https://base64-app-2he.pages.dev/en/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "FAQ",
+            "item": "https://base64-app-2he.pages.dev/en/faq.html"
+          }
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is Base64?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Base64 is an encoding scheme that represents any binary data (images or arbitrary byte sequences) using only 64 characters: letters, digits, and the symbols '+' and '/', plus '=' for padding. It is a conversion rule that lets data travel safely over text-only channels, and it is not encryption."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the difference between encoding and decoding?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Encoding converts the original data into a Base64 string, while decoding converts a Base64 string back into the original data. This tool auto-detects the last edited field: entering plain text encodes, and entering Base64 decodes."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is Base64 encryption or a security measure?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Base64 is a reversible conversion that anyone can undo, and there is no secret key. Encoding a password or sensitive data with Base64 does not protect it, so use encryption such as AES when confidentiality is required."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Where is Base64 used?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It is widely used wherever data must be handled as text: email attachments (MIME), data URIs that embed images directly in HTML/CSS, HTTP Basic authentication headers, embedding binary in JSON or XML, and encoding the parts of a JWT."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much does the size increase when using Base64?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Because Base64 represents 3 bytes with 4 characters, the data size grows by roughly 1.33x (about 33% larger). Line breaks and padding add a little more."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the '=' at the end?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "'=' is a padding character added to align the output to multiples of 4 characters when the original length is not a multiple of 3. It is a padding marker, not part of the data."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is URL-safe Base64?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Because '+' and '/' have special meaning in URLs and file names, URL-safe Base64 replaces them with '-' and '_' respectively. It is used in JWTs and similar cases."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is my input sent to a server?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The conversion itself is done entirely in your browser (client-side), and data is not sent externally for conversion. See the privacy policy for details."
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <main class="container">
+      <header class="header">
+        <h1>What is Base64? FAQ and guide</h1>
+        <p>The mechanics, uses, and caveats of Base64, explained clearly for beginners.</p>
+      </header>
+
+      <section class="panel content">
+        <h2>Base64 basics</h2>
+        <p>
+          <strong>Base64</strong> is an encoding scheme that represents binary data — such as
+          images or arbitrary byte sequences — using only <strong>64 characters</strong>:
+          letters (A–Z / a–z), digits (0–9), and the symbols <code>+</code> and <code>/</code>,
+          plus <code>=</code> for padding. Think of it as a shared conversion rule that lets data
+          pass through text-only channels or storage formats without being corrupted.
+        </p>
+        <p>
+          The mechanism is simple: the original data is split into <strong>3-byte (24-bit)</strong>
+          groups, regrouped into <strong>four 6-bit chunks</strong>, and each 6-bit chunk maps to one
+          character. For example, encoding "<code>Hello</code>" yields "<code>SGVsbG8=</code>".
+        </p>
+      </section>
+
+      <section class="panel content">
+        <h2>Common uses</h2>
+        <ul>
+          <li><strong>Email attachments (MIME)</strong>: to send binary attachments as text.</li>
+          <li><strong>Data URIs</strong>: to embed small images or fonts directly in HTML/CSS.</li>
+          <li><strong>Basic authentication</strong>: to encode a username and password in an HTTP header.</li>
+          <li><strong>Embedding in JSON / XML</strong>: to include binary within structured text.</li>
+          <li><strong>JWT (tokens)</strong>: each part is represented in URL-safe Base64.</li>
+        </ul>
+      </section>
+
+      <section class="panel content">
+        <h2>Frequently asked questions (FAQ)</h2>
+
+        <h3>Is Base64 encryption?</h3>
+        <p>
+          No. Base64 is a <strong>reversible conversion</strong> that anyone can undo, with no secret key.
+          Encoding a password or personal information with Base64 does not protect it, so combine it with
+          encryption such as AES when confidentiality is required.
+        </p>
+
+        <h3>How much does the size increase?</h3>
+        <p>
+          Since 3 bytes are represented by 4 characters, the data size grows by
+          <strong>roughly 1.33x (about 33% larger)</strong>. Line breaks and padding add a little more.
+        </p>
+
+        <h3>What is the "=" at the end?</h3>
+        <p>
+          <code>=</code> is <strong>padding</strong>, added to align the output to multiples of 4 characters
+          when the original length is not a multiple of 3. It is a padding marker, not the data itself.
+        </p>
+
+        <h3>How does it differ from URL-safe Base64?</h3>
+        <p>
+          URL-safe Base64 replaces <code>+</code> and <code>/</code> — which have special meaning in URLs and
+          file names — with <code>-</code> and <code>_</code>. It is used in JWTs and similar cases.
+        </p>
+
+        <h3>Why does decoding fail?</h3>
+        <p>
+          It fails when the input does not follow the Base64 format (4-character units, allowed characters,
+          padding), or when the result is an invalid UTF-8 byte sequence. Check for stray whitespace or
+          missing characters.
+        </p>
+
+        <h3>Is my input sent anywhere?</h3>
+        <p>
+          The conversion is <strong>done entirely in your browser</strong>, and data is not sent externally
+          for conversion. See the <a href="/en/privacy.html">privacy policy</a> for details.
+        </p>
+      </section>
+
+      <section class="convert-center">
+        <a class="cta-link" href="/en/">Use the Base64 Converter</a>
+      </section>
+
+      <aside class="ad-slot" aria-label="Sponsored">
+        <!-- BEGIN AADS AD UNIT 2448808 -->
+        <div id="frame" style="width: 100%;margin: auto;position: relative; z-index: 99998;">
+          <iframe data-aa='2448808' src='//acceptable.a-ads.com/2448808/?size=Adaptive' title='Advertisement'
+                            style='border:0; padding:0; width:70%; height:auto; overflow:hidden;display: block;margin: auto'></iframe>
+        </div>
+        <!-- END AADS AD UNIT 2448808 -->
+      </aside>
+
+      <footer class="footer-links">
+        <a href="/en/">Back to top</a>
+        <a href="/en/how-to-use.html">How to use</a>
+        <a href="/en/privacy.html">Privacy policy</a>
+        <a href="/faq.html" hreflang="ja" lang="ja">日本語</a>
+      </footer>
+    </main>
+  </body>
+</html>

@@ -72,6 +72,17 @@
   const sentLogKeys = new Set();
 
   function detectLocale() {
+    // 言語ごとに URL を分けているため、まずページ自身の宣言（<html lang>）を優先する。
+    // これにより、そのURLで固定表示され、検索エンジンにインデックスされた内容と一致する。
+    const declared = String(document.documentElement.lang || "").trim().toLowerCase();
+    if (declared.startsWith("ja")) {
+      return "ja";
+    }
+    if (declared.startsWith("en")) {
+      return "en";
+    }
+
+    // lang 未指定の場合のみブラウザ設定にフォールバックする。
     const candidates = Array.isArray(navigator.languages) && navigator.languages.length > 0
       ? navigator.languages
       : [navigator.language || "en"];

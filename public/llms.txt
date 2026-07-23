@@ -5,13 +5,21 @@
 - 変換方向は自動判定します。最後に編集した欄（Base64 または平文）を、もう一方へ変換します。
 - 中央の「変換」ボタンで実行します。入力上限は各欄 10,000 文字です。
 - 変換処理はサーバーへ送信されず、ブラウザ内で完結します（プライバシー重視）。
-- 表示言語は日本語・英語に対応し、ブラウザの言語設定で自動的に切り替わります。
+- 日本語ページと英語ページを URL で分けています（日本語: ルート直下、英語: /en/ 配下）。
 
-## ページ
+## ページ（日本語）
 
 - [Base64 変換ツール（トップ）](https://base64-app-2he.pages.dev/): Base64 と平文を相互変換するメインツール。
+- [FAQ・解説](https://base64-app-2he.pages.dev/faq.html): Base64 の仕組み・用途・注意点と、よくある質問への回答。
 - [使い方](https://base64-app-2he.pages.dev/how-to-use.html): 基本操作の手順と注意点。
 - [プライバシーポリシー](https://base64-app-2he.pages.dev/privacy.html): 取得情報・利用目的・第三者提供に関する方針。
+
+## Pages (English)
+
+- [Base64 Converter (home)](https://base64-app-2he.pages.dev/en/): Main tool to convert between Base64 and plain text.
+- [FAQ and guide](https://base64-app-2he.pages.dev/en/faq.html): How Base64 works, its uses and caveats, and common questions.
+- [How to use](https://base64-app-2he.pages.dev/en/how-to-use.html): Basic steps and notes.
+- [Privacy policy](https://base64-app-2he.pages.dev/en/privacy.html): Information collected, purpose of use, and third-party sharing.
 
 ## Optional
 
