@@ -9,6 +9,9 @@
   --primary-hover: #1d4ed8;
   --primary-text: #ffffff;
   --danger: #b91c1c;
+  /* 塗りつぶしボタン用。白文字が両モードで 4.5:1 以上になる青に固定 */
+  --btn-bg: #2563eb;
+  --btn-bg-hover: #1d4ed8;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -152,8 +155,8 @@ textarea:focus {
 }
 
 button {
-  border: 1px solid var(--primary);
-  background: var(--primary);
+  border: 1px solid var(--btn-bg);
+  background: var(--btn-bg);
   color: var(--primary-text);
   border-radius: 8px;
   padding: 0.5rem 0.78rem;
@@ -162,8 +165,8 @@ button {
 }
 
 button:hover {
-  background: var(--primary-hover);
-  border-color: var(--primary-hover);
+  background: var(--btn-bg-hover);
+  border-color: var(--btn-bg-hover);
 }
 
 button:focus-visible,
