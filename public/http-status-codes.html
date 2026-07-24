@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5206748133579380" crossorigin="anonymous"></script>
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#e7eef7" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#101726" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>HTTP ステータスコード一覧｜意味の早見表（200・301・404・500 ほか）</title>
+    <meta
+      name="description"
+      content="HTTP ステータスコードの一覧と意味を早見表で解説。1xx/2xx/3xx/4xx/5xx を網羅し、200 OK・301・302・304・401・403・404・429・500・502・503 などをひと目で確認できます。"
+    />
+    <meta name="robots" content="index,follow" />
+    <meta name="google-site-verification" content="77MztDN2EmCFP3QrmE3aG4WmQ941w2QQJwKbZX2R0nE" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="HTTP ステータスコード一覧｜意味の早見表" />
+    <meta property="og:description" content="1xx〜5xx の HTTP ステータスコードの意味を早見表で解説。200・301・404・500 ほか。" />
+    <meta property="og:url" content="https://base64-app-2he.pages.dev/http-status-codes" />
+    <meta property="og:image" content="https://base64-app-2he.pages.dev/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="オンライン変換ツール" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="canonical" href="https://base64-app-2he.pages.dev/http-status-codes" />
+    <link rel="alternate" hreflang="ja" href="https://base64-app-2he.pages.dev/http-status-codes" />
+    <link rel="alternate" hreflang="en" href="https://base64-app-2he.pages.dev/en/http-status-codes" />
+    <link rel="alternate" hreflang="x-default" href="https://base64-app-2he.pages.dev/en/http-status-codes" />
+    <link rel="stylesheet" href="/style.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "HTTP ステータスコード一覧｜意味の早見表",
+        "description": "1xx〜5xx の HTTP ステータスコードの名称と意味をまとめたリファレンス。",
+        "inLanguage": "ja",
+        "url": "https://base64-app-2he.pages.dev/http-status-codes",
+        "image": "https://base64-app-2he.pages.dev/og-image.jpg"
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "HTTP 404 の意味は？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "404 Not Found は、サーバーが要求されたリソースを見つけられなかったことを表します。URL の誤りや、ページの移動・削除が原因です。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "301 と 302 の違いは？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "301 は恒久的なリダイレクトで検索評価を新 URL に引き継ぎます。302 は一時的なリダイレクトで、元の URL がそのまま正規として扱われます。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "HTTP 500 の意味は？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "500 Internal Server Error は、サーバー内部で予期しないエラーが発生し、リクエストを処理できなかったことを示す汎用的なエラーです。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "502 Bad Gateway とは？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "502 Bad Gateway は、ゲートウェイやプロキシとして動作するサーバーが、上流サーバーから無効な応答を受け取ったことを意味します。"
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <main class="container">
+      <header class="header">
+        <h1>HTTP ステータスコード一覧</h1>
+        <p>1xx〜5xx の HTTP ステータスコードの名称と意味の早見表。クラスへジャンプ、または Ctrl / ⌘ + F で検索できます。</p>
+      </header>
+
+      <nav class="tool-nav" aria-label="クラスへジャンプ">
+        <a href="#c1">1xx 情報</a>
+        <a href="#c2">2xx 成功</a>
+        <a href="#c3">3xx リダイレクト</a>
+        <a href="#c4">4xx クライアントエラー</a>
+        <a href="#c5">5xx サーバーエラー</a>
+      </nav>
+
+      <section class="panel">
+        <h2 id="c1">1xx — 情報レスポンス</h2>
+        <p>リクエストを受け取り、処理を継続していることを示します。</p>
+        <div class="hm-scroll">
+          <table class="hm-table sc-table">
+            <thead><tr><th>コード</th><th>名称</th><th>意味</th></tr></thead>
+            <tbody>
+              <tr id="100"><td><code>100</code></td><td>Continue</td><td>リクエストの先頭部分を受理。クライアントは本文の送信を続けてよい。</td></tr>
+              <tr id="101"><td><code>101</code></td><td>Switching Protocols</td><td>クライアントの要求に従いプロトコルを切り替える（例: WebSocket へ）。</td></tr>
+              <tr id="102"><td><code>102</code></td><td>Processing</td><td>リクエストは受理したが処理は未完了（WebDAV）。</td></tr>
+              <tr id="103"><td><code>103</code></td><td>Early Hints</td><td>最終応答の前に <code>Link</code> プリロード等のヘッダーを先送りする。</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2 id="c2">2xx — 成功</h2>
+        <p>リクエストが正常に受理・処理されたことを示します。</p>
+        <div class="hm-scroll">
+          <table class="hm-table sc-table">
+            <thead><tr><th>コード</th><th>名称</th><th>意味</th></tr></thead>
+            <tbody>
+              <tr id="200"><td><code>200</code></td><td>OK</td><td>標準的な成功応答。意味は HTTP メソッドに依存する（GET なら本文を返す等）。</td></tr>
+              <tr id="201"><td><code>201</code></td><td>Created</td><td>リクエストが成功し、新しいリソースが作成された（POST/PUT の後など）。</td></tr>
+              <tr id="202"><td><code>202</code></td><td>Accepted</td><td>処理のために受理されたが、処理はまだ完了していない（非同期）。</td></tr>
+              <tr id="203"><td><code>203</code></td><td>Non-Authoritative Information</td><td>返すメタ情報が、オリジンではなく複製や変換プロキシ由来である。</td></tr>
+              <tr id="204"><td><code>204</code></td><td>No Content</td><td>成功したが、本文として返す内容はない。</td></tr>
+              <tr id="205"><td><code>205</code></td><td>Reset Content</td><td>成功後、フォーム等の表示をリセットするようクライアントに指示する。</td></tr>
+              <tr id="206"><td><code>206</code></td><td>Partial Content</td><td><code>Range</code> ヘッダーに応じてリソースの一部のみを返す（レジューム DL 等）。</td></tr>
+              <tr id="207"><td><code>207</code></td><td>Multi-Status</td><td>複数の操作それぞれに対する独立したステータスをまとめて返す（WebDAV）。</td></tr>
+              <tr id="208"><td><code>208</code></td><td>Already Reported</td><td>WebDAV バインディングの要素が既に列挙済みで、繰り返さない。</td></tr>
+              <tr id="226"><td><code>226</code></td><td>IM Used</td><td>現在のリソースにインスタンス操作を適用した結果を返す。</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <aside class="ad-slot" aria-label="広告">
+        <!-- BEGIN AADS AD UNIT 2448808 -->
+        <div class="ad-frame-wrap">
+          <iframe data-aa='2448808' src='//acceptable.a-ads.com/2448808/?size=Adaptive' title='広告'
+                            class='ad-frame'></iframe>
+        </div>
+        <!-- END AADS AD UNIT 2448808 -->
+      </aside>
+
+      <section class="panel">
+        <h2 id="c3">3xx — リダイレクト</h2>
+        <p>リクエスト完了には追加の操作が必要で、リソースが別の場所にあります。</p>
+        <div class="hm-scroll">
+          <table class="hm-table sc-table">
+            <thead><tr><th>コード</th><th>名称</th><th>意味</th></tr></thead>
+            <tbody>
+              <tr id="300"><td><code>300</code></td><td>Multiple Choices</td><td>複数の応答候補があり、クライアントまたは利用者が選ぶ。</td></tr>
+              <tr id="301"><td><code>301</code></td><td>Moved Permanently</td><td>リソースが恒久的に新 URL へ移動。検索評価は新 URL に引き継がれる。</td></tr>
+              <tr id="302"><td><code>302</code></td><td>Found</td><td>一時的に別 URL にある。元の URL が正規のまま扱われる。</td></tr>
+              <tr id="303"><td><code>303</code></td><td>See Other</td><td>応答は別 URL にあり、GET で取得すべきことを示す。</td></tr>
+              <tr id="304"><td><code>304</code></td><td>Not Modified</td><td>キャッシュが有効なので再利用可能。条件付きリクエストで帯域を節約。</td></tr>
+              <tr id="307"><td><code>307</code></td><td>Temporary Redirect</td><td>302 と同様だが、リダイレクト時に HTTP メソッド（POST 等）を変えない。</td></tr>
+              <tr id="308"><td><code>308</code></td><td>Permanent Redirect</td><td>301 と同様でメソッドを変えない。Cloudflare Pages は末尾整形にこれを使う。</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2 id="c4">4xx — クライアントエラー</h2>
+        <p>リクエストに問題があり、サーバーが処理できない場合です。</p>
+        <div class="hm-scroll">
+          <table class="hm-table sc-table">
+            <thead><tr><th>コード</th><th>名称</th><th>意味</th></tr></thead>
+            <tbody>
+              <tr id="400"><td><code>400</code></td><td>Bad Request</td><td>構文の誤りや無効なパラメータのため、リクエストを処理できない。</td></tr>
+              <tr id="401"><td><code>401</code></td><td>Unauthorized</td><td>認証が必要だが、認証に失敗した、または未提供である。</td></tr>
+              <tr id="402"><td><code>402</code></td><td>Payment Required</td><td>将来のための予約。API が課金上の問題を示すのに使うことがある。</td></tr>
+              <tr id="403"><td><code>403</code></td><td>Forbidden</td><td>リクエストは理解したが、権限不足で許可しない。</td></tr>
+              <tr id="404"><td><code>404</code></td><td>Not Found</td><td>要求されたリソースが見つからない。URL の誤りや削除が原因。</td></tr>
+              <tr id="405"><td><code>405</code></td><td>Method Not Allowed</td><td>そのリソースで許可されない HTTP メソッド（読取専用への POST 等）。</td></tr>
+              <tr id="406"><td><code>406</code></td><td>Not Acceptable</td><td>クライアントの <code>Accept</code> に合致する表現がない。</td></tr>
+              <tr id="407"><td><code>407</code></td><td>Proxy Authentication Required</td><td>まずプロキシで認証する必要がある。</td></tr>
+              <tr id="408"><td><code>408</code></td><td>Request Timeout</td><td>クライアントからのリクエスト送信を待ってタイムアウトした。</td></tr>
+              <tr id="409"><td><code>409</code></td><td>Conflict</td><td>リソースの現在の状態と競合する（編集の衝突など）。</td></tr>
+              <tr id="410"><td><code>410</code></td><td>Gone</td><td>リソースは恒久的に消失し、転送先も不明。</td></tr>
+              <tr id="411"><td><code>411</code></td><td>Length Required</td><td><code>Content-Length</code> ヘッダーが必要だが欠落している。</td></tr>
+              <tr id="412"><td><code>412</code></td><td>Precondition Failed</td><td>ヘッダーの前提条件（<code>If-Match</code> 等）が満たされない。</td></tr>
+              <tr id="413"><td><code>413</code></td><td>Content Too Large</td><td>リクエスト本文がサーバーの処理可能な上限を超えている。</td></tr>
+              <tr id="414"><td><code>414</code></td><td>URI Too Long</td><td>要求 URI がサーバーの解釈できる長さを超えている。</td></tr>
+              <tr id="415"><td><code>415</code></td><td>Unsupported Media Type</td><td>本文の形式（<code>Content-Type</code>）がリソースで未対応。</td></tr>
+              <tr id="416"><td><code>416</code></td><td>Range Not Satisfiable</td><td>要求された <code>Range</code> がリソースのサイズ外で提供できない。</td></tr>
+              <tr id="417"><td><code>417</code></td><td>Expectation Failed</td><td><code>Expect</code> ヘッダーの期待を満たせない。</td></tr>
+              <tr id="418"><td><code>418</code></td><td>I'm a teapot</td><td>エイプリルフールのジョークコード（RFC 2324）。遊びで返されることがある。</td></tr>
+              <tr id="421"><td><code>421</code></td><td>Misdirected Request</td><td>応答を生成できないサーバーへリクエストが送られた。</td></tr>
+              <tr id="422"><td><code>422</code></td><td>Unprocessable Content</td><td>構文は正しいが意味的な誤りがある（バリデーション API で多用）。</td></tr>
+              <tr id="423"><td><code>423</code></td><td>Locked</td><td>アクセス対象のリソースがロックされている（WebDAV）。</td></tr>
+              <tr id="424"><td><code>424</code></td><td>Failed Dependency</td><td>依存する別リクエストが失敗したため失敗した（WebDAV）。</td></tr>
+              <tr id="425"><td><code>425</code></td><td>Too Early</td><td>再送される恐れのあるリクエストの処理を拒む。</td></tr>
+              <tr id="426"><td><code>426</code></td><td>Upgrade Required</td><td><code>Upgrade</code> ヘッダーで示す別プロトコルへの切替が必要。</td></tr>
+              <tr id="428"><td><code>428</code></td><td>Precondition Required</td><td>条件付きリクエストを要求（更新の取りこぼしを防ぐ）。</td></tr>
+              <tr id="429"><td><code>429</code></td><td>Too Many Requests</td><td>一定時間に送りすぎ（レート制限）。</td></tr>
+              <tr id="431"><td><code>431</code></td><td>Request Header Fields Too Large</td><td>ヘッダーフィールドが大きすぎて処理できない。</td></tr>
+              <tr id="451"><td><code>451</code></td><td>Unavailable For Legal Reasons</td><td>法的要請（検閲・削除要求など）で利用できない。</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2 id="c5">5xx — サーバーエラー</h2>
+        <p>正当なリクエストに対し、サーバー側が処理に失敗した場合です。</p>
+        <div class="hm-scroll">
+          <table class="hm-table sc-table">
+            <thead><tr><th>コード</th><th>名称</th><th>意味</th></tr></thead>
+            <tbody>
+              <tr id="500"><td><code>500</code></td><td>Internal Server Error</td><td>汎用エラー。サーバー内部で予期しない状態が発生し処理できなかった。</td></tr>
+              <tr id="501"><td><code>501</code></td><td>Not Implemented</td><td>リクエストの実現に必要な機能をサーバーが備えていない。</td></tr>
+              <tr id="502"><td><code>502</code></td><td>Bad Gateway</td><td>ゲートウェイ／プロキシが上流サーバーから無効な応答を受け取った。</td></tr>
+              <tr id="503"><td><code>503</code></td><td>Service Unavailable</td><td>過負荷やメンテナンスで一時的に利用不可。時間をおいて再試行。</td></tr>
+              <tr id="504"><td><code>504</code></td><td>Gateway Timeout</td><td>ゲートウェイ／プロキシが上流から時間内に応答を得られなかった。</td></tr>
+              <tr id="505"><td><code>505</code></td><td>HTTP Version Not Supported</td><td>リクエストの HTTP バージョンをサーバーが未対応。</td></tr>
+              <tr id="506"><td><code>506</code></td><td>Variant Also Negotiates</td><td>サーバー側のコンテンツネゴシエーション設定エラー。</td></tr>
+              <tr id="507"><td><code>507</code></td><td>Insufficient Storage</td><td>処理に必要な表現を保存できない（WebDAV）。</td></tr>
+              <tr id="508"><td><code>508</code></td><td>Loop Detected</td><td>処理中に無限ループを検出した（WebDAV）。</td></tr>
+              <tr id="510"><td><code>510</code></td><td>Not Extended</td><td>要求の実現にはさらなる拡張が必要。</td></tr>
+              <tr id="511"><td><code>511</code></td><td>Network Authentication Required</td><td>ネットワーク利用に認証が必要（キャプティブポータルで多い）。</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>よくある質問</h2>
+        <p><strong>404 の意味は？</strong> サーバーが要求されたリソースを見つけられない状態です。URL の誤りや、ページの移動・削除が原因です。</p>
+        <p><strong>301 と 302 の違いは？</strong> 301 は恒久的リダイレクトで検索評価を新 URL に引き継ぎ、302 は一時的で元の URL が正規のまま扱われます。</p>
+        <p><strong>502 Bad Gateway とは？</strong> ゲートウェイ／プロキシとして動くサーバーが、頼った上流サーバーから無効な応答を受け取った状態です。</p>
+      </section>
+
+      <footer class="footer-links">
+        <a href="/tools">ツール一覧</a>
+        <a href="/">Base64 変換</a>
+        <a href="/faq">FAQ・解説</a>
+        <a href="/privacy">プライバシーポリシー</a>
+        <a href="/en/http-status-codes" hreflang="en" lang="en">English</a>
+      </footer>
+    </main>
+    <!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1575aefabb554064b56a2098eae2b166"}'></script><!-- End Cloudflare Web Analytics -->
+  </body>
+</html>

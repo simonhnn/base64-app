@@ -276,6 +276,25 @@ html[lang="en"] .ad-slot::before {
   margin-left: 0.2rem;
 }
 
+/* --- HTTP ステータスコード表: 説明が長いので折り返し＋左寄せ --- */
+.sc-table td:nth-child(2),
+.sc-table td:nth-child(3) {
+  white-space: normal;
+  text-align: left;
+}
+
+.sc-table td:first-child {
+  font-weight: 700;
+}
+
+.sc-table tr[id] {
+  scroll-margin-top: 4.5rem;
+}
+
+.sc-table td code {
+  font: inherit;
+}
+
 /* --- トップの他ツール導線 --- */
 .tool-nav {
   display: flex;

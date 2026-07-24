@@ -23,6 +23,7 @@ const JA_TO_EN = {
   "/url-encode": "/en/url-encode",
   "/json-format": "/en/json-format",
   "/hash": "/en/hash",
+  "/http-status-codes": "/en/http-status-codes",
 };
 
 // 主要な検索エンジン/SNS のクローラーを判定する（振り分け対象外にする）。
