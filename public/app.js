@@ -193,6 +193,30 @@
     return { content: [{ type: "text", text: String(text) }] };
   }
 
+  // WebMCP の encode/decode 共通処理。inputSide 側の入力欄に値を入れて変換し、
+  // 反対側（結果）の値、またはエラーメッセージを toolResult で返す。
+  async function runToolConversion(value, inputSide) {
+    if (typeof value !== "string" || value.length === 0) {
+      return toolResult(t("noInput"));
+    }
+    if (value.length > MAX_LEN) {
+      return toolResult(t("inputLimit"));
+    }
+
+    const inputField = inputSide === "plain" ? plainText : base64Text;
+    const resultField = inputSide === "plain" ? base64Text : plainText;
+    resultField.value = "";
+    inputField.value = value;
+    lastEdited = inputSide;
+    await handleConvert();
+
+    return toolResult(
+      statusMessage.classList.contains("error")
+        ? statusMessage.textContent
+        : resultField.value
+    );
+  }
+
   // AI エージェント向けに WebMCP ツールを公開する（navigator.modelContext）。
   // 未対応環境では何もしない。
   function registerWebMcpTools() {
@@ -218,23 +242,7 @@
           required: ["text"],
           additionalProperties: false,
         },
-        async execute({ text }) {
-          if (typeof text !== "string" || text.length === 0) {
-            return toolResult(t("noInput"));
-          }
-          if (text.length > MAX_LEN) {
-            return toolResult(t("inputLimit"));
-          }
-          base64Text.value = "";
-          plainText.value = text;
-          lastEdited = "plain";
-          await handleConvert();
-          return toolResult(
-            statusMessage.classList.contains("error")
-              ? statusMessage.textContent
-              : base64Text.value
-          );
-        },
+        execute: ({ text }) => runToolConversion(text, "plain"),
       },
       {
         name: "decode_from_base64",
@@ -252,23 +260,7 @@
           required: ["base64"],
           additionalProperties: false,
         },
-        async execute({ base64 }) {
-          if (typeof base64 !== "string" || base64.length === 0) {
-            return toolResult(t("noInput"));
-          }
-          if (base64.length > MAX_LEN) {
-            return toolResult(t("inputLimit"));
-          }
-          plainText.value = "";
-          base64Text.value = base64;
-          lastEdited = "base64";
-          await handleConvert();
-          return toolResult(
-            statusMessage.classList.contains("error")
-              ? statusMessage.textContent
-              : plainText.value
-          );
-        },
+        execute: ({ base64 }) => runToolConversion(base64, "base64"),
       },
       {
         name: "clear_all",

@@ -6,7 +6,6 @@
   --muted: #4b5563;
   --border: #d1d5db;
   --primary: #2563eb;
-  --primary-hover: #1d4ed8;
   --primary-text: #ffffff;
   --danger: #b91c1c;
   /* 塗りつぶしボタン用。白文字が両モードで 4.5:1 以上になる青に固定 */
@@ -22,7 +21,6 @@
     --muted: #9ca3af;
     --border: #374151;
     --primary: #3b82f6;
-    --primary-hover: #60a5fa;
     --primary-text: #ffffff;
     --danger: #f87171;
   }
