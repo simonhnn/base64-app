@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5206748133579380" crossorigin="anonymous"></script>
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#e7eef7" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#101726" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>Super Chat Take-Home Calculator | Tip & Donation Payout Estimator</title>
+    <meta
+      name="description"
+      content="Estimate a streamer's take-home from Super Chats, tips, and donations after platform fees. Enter an amount and fee rate, or reverse-calculate the amount needed to reach a payout goal. Runs entirely in your browser."
+    />
+    <meta name="robots" content="index,follow" />
+    <meta name="google-site-verification" content="77MztDN2EmCFP3QrmE3aG4WmQ941w2QQJwKbZX2R0nE" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Super Chat Take-Home Calculator" />
+    <meta property="og:description" content="Estimate a streamer's payout from Super Chats and tips after fees, in your browser." />
+    <meta property="og:url" content="https://base64-app-2he.pages.dev/en/superchat-calculator" />
+    <meta property="og:image" content="https://base64-app-2he.pages.dev/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Online Converter Tools" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="ja_JP" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="canonical" href="https://base64-app-2he.pages.dev/en/superchat-calculator" />
+    <link rel="alternate" hreflang="ja" href="https://base64-app-2he.pages.dev/superchat-calculator" />
+    <link rel="alternate" hreflang="en" href="https://base64-app-2he.pages.dev/en/superchat-calculator" />
+    <link rel="alternate" hreflang="x-default" href="https://base64-app-2he.pages.dev/superchat-calculator" />
+    <link rel="stylesheet" href="/style.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Super Chat Take-Home Calculator",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Any",
+        "url": "https://base64-app-2he.pages.dev/en/superchat-calculator",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "browserRequirements": "JavaScript",
+        "inLanguage": ["ja", "en"],
+        "description": "Free browser-based tool to estimate a streamer's take-home from Super Chats and tips after platform fees."
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How much of a Super Chat does the streamer keep?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It depends on the platform and the payment route. As a rough guide, on desktop/web the platform fee is often about 30% (streamer keeps around 70%), while purchases made through iOS/Android apps add app-store fees on top, so the take-home is lower. Check each platform's current terms for exact figures."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why does the take-home differ between desktop and mobile apps?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Purchases made inside mobile apps incur App Store (Apple) or Google Play processing fees in addition to the platform's own cut, so the same amount yields a smaller payout via an app than via desktop/web."
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <main class="container">
+      <header class="header">
+        <h1>Super Chat Take-Home Calculator</h1>
+        <p>Estimate a streamer's take-home from Super Chats, tips, and donations after platform fees. Everything is calculated in your browser.</p>
+      </header>
+
+      <section class="panel">
+        <div class="panel-head"><h2>Input</h2></div>
+        <div class="panel-body">
+          <div class="sc-grid">
+            <div class="sc-field">
+              <label for="scAmount">Tip / Super Chat amount</label>
+              <input id="scAmount" class="sc-input" type="number" inputmode="numeric" min="0" step="1" value="100" placeholder="e.g. 100" />
+            </div>
+            <div class="sc-field">
+              <label for="scFee">Fee rate (%)</label>
+              <input id="scFee" class="sc-input" type="number" inputmode="decimal" min="0" max="100" step="0.1" value="30" placeholder="e.g. 30" />
+            </div>
+          </div>
+          <div class="sc-presets" aria-label="Fill in an approximate fee rate">
+            <button type="button" class="sc-chip" data-fee="30">YouTube web (~30%)</button>
+            <button type="button" class="sc-chip" data-fee="45">YouTube app (~45%)</button>
+            <button type="button" class="sc-chip" data-fee="50">Twitch (~50%)</button>
+            <button type="button" class="sc-chip" data-fee="0">No fee (0%)</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head"><h2>Take-home</h2></div>
+        <div class="panel-body">
+          <div class="sc-result">
+            <div class="sc-cell sc-primary">
+              <span class="sc-label">Streamer take-home</span>
+              <span class="sc-num"><span id="scNet">70</span></span>
+            </div>
+            <div class="sc-cell">
+              <span class="sc-label">Fee deducted</span>
+              <span class="sc-num"><span id="scFeeAmount">30</span></span>
+            </div>
+            <div class="sc-cell">
+              <span class="sc-label">Keep rate</span>
+              <span class="sc-num"><span id="scNetRate">70.0</span><span class="sc-unit">%</span></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head"><h2>Reverse: amount needed for a payout goal</h2></div>
+        <div class="panel-body">
+          <div class="sc-grid">
+            <div class="sc-field">
+              <label for="scTarget">Target take-home</label>
+              <input id="scTarget" class="sc-input" type="number" inputmode="numeric" min="0" step="10" placeholder="e.g. 1000" />
+            </div>
+            <div class="sc-field">
+              <label>Total tips required</label>
+              <div class="sc-cell" style="padding:0.5rem 0.7rem">
+                <span class="sc-num"><span id="scGross">—</span></span>
+              </div>
+            </div>
+          </div>
+          <p class="status" role="status" aria-live="polite">Using the fee rate above, this reverse-calculates the total tips needed to reach your target take-home.</p>
+        </div>
+      </section>
+
+      <aside class="ad-slot" aria-label="Sponsored">
+        <!-- BEGIN AADS AD UNIT 2448808 -->
+        <div class="ad-frame-wrap">
+          <iframe data-aa='2448808' src='//acceptable.a-ads.com/2448808/?size=Adaptive' title='Sponsored'
+                            class='ad-frame'></iframe>
+        </div>
+        <!-- END AADS AD UNIT 2448808 -->
+      </aside>
+
+      <section class="panel">
+        <h2>How Super Chat fees work</h2>
+        <p>
+          With Super Chats, tips, and donations, the streamer does not receive the full amount a viewer sends.
+          The platform deducts a <strong>fee</strong>, and the remainder is the streamer's payout (take-home).
+          This calculator uses a simple "amount × (100 − fee)%" model, and the fee rate is fully editable.
+        </p>
+      </section>
+
+      <section class="panel">
+        <h2>Why desktop and mobile apps differ</h2>
+        <p>
+          Purchases made inside mobile apps add <strong>App Store (Apple)</strong> or <strong>Google Play</strong>
+          processing fees on top of the platform's own cut, so the same amount yields a smaller payout than via
+          desktop/web. The preset values (YouTube web ≈ 30%, app ≈ 45%, and so on) are widely cited
+          <strong>approximations</strong> that vary by payment route, contract, and time — always confirm the exact
+          split in each platform's current terms.
+        </p>
+      </section>
+
+      <section class="panel">
+        <h2>How to use</h2>
+        <p>
+          Enter the tip amount and fee rate to instantly see the take-home, the fee deducted, and the keep rate.
+          Use the preset buttons to fill in a rough fee rate, then fine-tune it. Enter a target take-home in the
+          reverse section to find how much needs to be sent to reach it. This tool does not send your input to any
+          server; all calculation happens in your browser.
+        </p>
+      </section>
+
+      <footer class="footer-links">
+        <a href="/en/tools">All tools</a>
+        <a href="/en/">Base64</a>
+        <a href="/en/faq">FAQ</a>
+        <a href="/en/privacy">Privacy policy</a>
+        <a href="/superchat-calculator?lang=ja" hreflang="ja" lang="ja">日本語</a>
+      </footer>
+    </main>
+
+    <script src="/tools.js" defer></script>
+    <!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1575aefabb554064b56a2098eae2b166"}'></script><!-- End Cloudflare Web Analytics -->
+  </body>
+</html>

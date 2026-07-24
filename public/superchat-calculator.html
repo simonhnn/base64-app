@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5206748133579380" crossorigin="anonymous"></script>
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#e7eef7" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#101726" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>スパチャ手取り計算機｜スーパーチャットの手数料・取り分シミュレーター</title>
+    <meta
+      name="description"
+      content="スーパーチャット（スパチャ）や投げ銭の手数料を引いた配信者の手取り額を無料でシミュレーション。金額と手数料率を入れるだけ。目標の手取りから必要額を逆算する機能も。計算はすべてブラウザ内で行います。"
+    />
+    <meta name="robots" content="index,follow" />
+    <meta name="google-site-verification" content="77MztDN2EmCFP3QrmE3aG4WmQ941w2QQJwKbZX2R0nE" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="スパチャ手取り計算機" />
+    <meta property="og:description" content="スーパーチャット・投げ銭の手数料を引いた手取り額をブラウザ内で計算。" />
+    <meta property="og:url" content="https://base64-app-2he.pages.dev/superchat-calculator" />
+    <meta property="og:image" content="https://base64-app-2he.pages.dev/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="オンライン変換ツール" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="canonical" href="https://base64-app-2he.pages.dev/superchat-calculator" />
+    <link rel="alternate" hreflang="ja" href="https://base64-app-2he.pages.dev/superchat-calculator" />
+    <link rel="alternate" hreflang="en" href="https://base64-app-2he.pages.dev/en/superchat-calculator" />
+    <link rel="alternate" hreflang="x-default" href="https://base64-app-2he.pages.dev/superchat-calculator" />
+    <link rel="stylesheet" href="/style.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "スパチャ手取り計算機",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Any",
+        "url": "https://base64-app-2he.pages.dev/superchat-calculator",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" },
+        "browserRequirements": "JavaScript",
+        "inLanguage": ["ja", "en"],
+        "description": "スーパーチャット・投げ銭の手数料を差し引いた配信者の手取り額をブラウザ内で計算する無料ツール。"
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "スーパーチャットの配信者の手取りはいくらですか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "プラットフォームや決済経路によって異なります。一般に、PC・Webブラウザ経由では手数料が約30%（手取り約70%）、iOS/Androidアプリ経由ではアプリストア手数料が上乗せされ手取りはさらに下がるとされています。正確な率は各プラットフォームの最新の規約をご確認ください。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "PCとスマホアプリで手取りが変わるのはなぜですか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "スマホアプリ経由の課金では、プラットフォームの手数料に加えてApp Store（Apple）やGoogle Playの決済手数料が上乗せされるためです。同じ金額を送っても、アプリ経由よりPC・Web経由のほうが配信者の手取りは多くなる傾向があります。"
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <main class="container">
+      <header class="header">
+        <h1>スパチャ手取り計算機</h1>
+        <p>スーパーチャット（スパチャ）・投げ銭の手数料を差し引いた、配信者の手取り額を計算します。計算はブラウザ内だけで行います。</p>
+      </header>
+
+      <section class="panel">
+        <div class="panel-head"><h2>入力</h2></div>
+        <div class="panel-body">
+          <div class="sc-grid">
+            <div class="sc-field">
+              <label for="scAmount">投げ銭・スパチャ金額（円）</label>
+              <input id="scAmount" class="sc-input" type="number" inputmode="numeric" min="0" step="100" value="10000" placeholder="例: 10000" />
+            </div>
+            <div class="sc-field">
+              <label for="scFee">手数料率（%）</label>
+              <input id="scFee" class="sc-input" type="number" inputmode="decimal" min="0" max="100" step="0.1" value="30" placeholder="例: 30" />
+            </div>
+          </div>
+          <div class="sc-presets" aria-label="手数料率の目安を入力">
+            <button type="button" class="sc-chip" data-fee="30">YouTube Web（約30%）</button>
+            <button type="button" class="sc-chip" data-fee="45">YouTube アプリ（約45%）</button>
+            <button type="button" class="sc-chip" data-fee="50">Twitch（約50%）</button>
+            <button type="button" class="sc-chip" data-fee="0">手数料なし（0%）</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head"><h2>手取り</h2></div>
+        <div class="panel-body">
+          <div class="sc-result">
+            <div class="sc-cell sc-primary">
+              <span class="sc-label">配信者の手取り額</span>
+              <span class="sc-num"><span id="scNet">7,000</span><span class="sc-unit">円</span></span>
+            </div>
+            <div class="sc-cell">
+              <span class="sc-label">差し引かれる手数料</span>
+              <span class="sc-num"><span id="scFeeAmount">3,000</span><span class="sc-unit">円</span></span>
+            </div>
+            <div class="sc-cell">
+              <span class="sc-label">手取り率</span>
+              <span class="sc-num"><span id="scNetRate">70.0</span><span class="sc-unit">%</span></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head"><h2>逆算：目標の手取りから必要額を求める</h2></div>
+        <div class="panel-body">
+          <div class="sc-grid">
+            <div class="sc-field">
+              <label for="scTarget">目標の手取り額（円）</label>
+              <input id="scTarget" class="sc-input" type="number" inputmode="numeric" min="0" step="1000" placeholder="例: 100000" />
+            </div>
+            <div class="sc-field">
+              <label>必要な投げ銭の合計</label>
+              <div class="sc-cell" style="padding:0.5rem 0.7rem">
+                <span class="sc-num"><span id="scGross">—</span><span class="sc-unit">円</span></span>
+              </div>
+            </div>
+          </div>
+          <p class="status" role="status" aria-live="polite">上の「手数料率」を使って、目標の手取りに必要な投げ銭の合計額を逆算します。</p>
+        </div>
+      </section>
+
+      <aside class="ad-slot" aria-label="広告">
+        <!-- BEGIN AADS AD UNIT 2448808 -->
+        <div class="ad-frame-wrap">
+          <iframe data-aa='2448808' src='//acceptable.a-ads.com/2448808/?size=Adaptive' title='広告'
+                            class='ad-frame'></iframe>
+        </div>
+        <!-- END AADS AD UNIT 2448808 -->
+      </aside>
+
+      <section class="panel">
+        <h2>スーパーチャットの手数料の仕組み</h2>
+        <p>
+          スーパーチャット（スパチャ）や投げ銭では、視聴者が送った金額の全額が配信者に渡るわけではありません。
+          配信プラットフォームが所定の<strong>手数料</strong>を差し引き、残りが配信者の売上（手取り）になります。
+          この計算機は「金額 × (100 − 手数料率)%」で手取りを求めるシンプルなツールで、手数料率は自由に編集できます。
+        </p>
+      </section>
+
+      <section class="panel">
+        <h2>PC とスマホアプリで手取りが変わる理由</h2>
+        <p>
+          スマホアプリ経由の課金では、プラットフォームの取り分に加えて <strong>App Store（Apple）</strong> や
+          <strong>Google Play</strong> の決済手数料が上乗せされるため、同じ金額でも配信者の手取りは
+          PC・Web ブラウザ経由より少なくなる傾向があります。プリセットの数値（YouTube Web=約30%、アプリ=約45% など）は
+          一般に知られている<strong>目安</strong>で、決済経路・契約・時期によって変動します。
+          正確な取り分は各プラットフォームの最新の規約でご確認ください。
+        </p>
+      </section>
+
+      <section class="panel">
+        <h2>使い方</h2>
+        <p>
+          「投げ銭・スパチャ金額」と「手数料率」を入力すると、手取り額・差し引かれる手数料・手取り率が即座に表示されます。
+          手数料率はプリセットのボタンで目安を入力してから微調整できます。
+          「逆算」欄に目標の手取り額を入れると、その手取りを得るために必要な投げ銭の合計額を計算します。
+          このツールは入力値をサーバーに送信せず、計算はすべてお使いのブラウザ内で完結します。
+        </p>
+      </section>
+
+      <footer class="footer-links">
+        <a href="/tools">ツール一覧</a>
+        <a href="/">Base64 変換</a>
+        <a href="/nenrei-hayami">年齢早見表</a>
+        <a href="/faq">FAQ・解説</a>
+        <a href="/privacy">プライバシーポリシー</a>
+        <a href="/en/superchat-calculator" hreflang="en" lang="en">English</a>
+      </footer>
+    </main>
+
+    <script src="/tools.js" defer></script>
+    <!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1575aefabb554064b56a2098eae2b166"}'></script><!-- End Cloudflare Web Analytics -->
+  </body>
+</html>
