@@ -656,3 +656,30 @@ textarea[readonly] {
   vertical-align: -1px;
   border: 1px solid color-mix(in srgb, var(--text) 25%, transparent 75%);
 }
+
+/* ---- 結論ファースト: 結果を一目でわかるヒーロー表示に ---- */
+.sc-cell.sc-primary {
+  text-align: center;
+  padding: 1.15rem 1rem;
+}
+.sc-cell.sc-primary .sc-label {
+  font-size: 0.92rem;
+  margin-bottom: 0.45rem;
+}
+.sc-cell.sc-primary .sc-num {
+  font-size: clamp(2.1rem, 7vw, 3.4rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+.sc-cell.sc-primary .sc-unit {
+  font-size: 0.5em;
+}
+/* 注記は結論より控えめに（見やすさ優先） */
+.disclaimer {
+  font-size: 0.78rem;
+  line-height: 1.5;
+  padding: 0.5rem 0.75rem;
+  border-color: var(--border);
+  background: color-mix(in srgb, var(--muted) 7%, var(--surface) 93%);
+  color: var(--muted);
+}

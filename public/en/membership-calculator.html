@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5206748133579380" crossorigin="anonymous"></script>
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#e7eef7" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#101726" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>Membership Revenue Calculator | YouTube Members × Price Take-Home</title>
+    <meta
+      name="description"
+      content="Estimate the monthly and yearly take-home from YouTube channel memberships. Enter member count, monthly price, and fee rate. Handles the desktop vs mobile-app fee difference. Runs in your browser."
+    />
+    <meta name="robots" content="index,follow" />
+    <meta name="google-site-verification" content="77MztDN2EmCFP3QrmE3aG4WmQ941w2QQJwKbZX2R0nE" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Membership Revenue Calculator" />
+    <meta property="og:description" content="Estimate YouTube membership take-home in your browser." />
+    <meta property="og:url" content="https://base64-app-2he.pages.dev/en/membership-calculator" />
+    <meta property="og:image" content="https://base64-app-2he.pages.dev/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Online Converter Tools" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="ja_JP" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="canonical" href="https://base64-app-2he.pages.dev/en/membership-calculator" />
+    <link rel="alternate" hreflang="ja" href="https://base64-app-2he.pages.dev/membership-calculator" />
+    <link rel="alternate" hreflang="en" href="https://base64-app-2he.pages.dev/en/membership-calculator" />
+    <link rel="alternate" hreflang="x-default" href="https://base64-app-2he.pages.dev/membership-calculator" />
+    <link rel="stylesheet" href="/style.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Membership Revenue Calculator",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Any",
+        "url": "https://base64-app-2he.pages.dev/en/membership-calculator",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "browserRequirements": "JavaScript",
+        "inLanguage": ["ja", "en"],
+        "description": "Free browser tool to estimate YouTube channel membership take-home."
+      }
+    </script>
+  </head>
+  <body>
+    <main class="container">
+      <header class="header">
+        <h1>Membership Revenue Calculator</h1>
+        <p>Estimate the <strong>monthly and yearly take-home</strong> from YouTube channel memberships, from member count, price, and fee rate. Calculated in your browser.</p>
+      </header>
+
+      <section class="panel">
+        <div class="panel-head"><h2>Input</h2></div>
+        <div class="panel-body">
+          <div class="sc-grid">
+            <div class="sc-field">
+              <label for="mcMembers">Members</label>
+              <input id="mcMembers" class="sc-input" type="number" inputmode="numeric" min="0" step="1" value="100" />
+            </div>
+            <div class="sc-field">
+              <label for="mcPrice">Monthly price (USD)</label>
+              <input id="mcPrice" class="sc-input" type="number" inputmode="decimal" min="0" step="0.1" value="4.99" />
+            </div>
+          </div>
+          <div class="sc-field" style="margin-top:0.9rem;max-width:280px">
+            <label for="mcFee">Fee rate (%)</label>
+            <input id="mcFee" class="sc-input" type="number" inputmode="decimal" min="0" max="100" step="0.1" value="30" />
+          </div>
+          <div class="sc-presets" aria-label="Fill in an approximate fee rate">
+            <button type="button" class="sc-chip" data-mc-fee="30">Web (~30%)</button>
+            <button type="button" class="sc-chip" data-mc-fee="45">App (~45%)</button>
+            <button type="button" class="sc-chip" data-mc-fee="0">No fee (0%)</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head"><h2>Take-home</h2></div>
+        <div class="panel-body">
+          <div class="sc-result">
+            <div class="sc-cell sc-primary">
+              <span class="sc-label">Monthly take-home</span>
+              <span class="sc-num"><span id="mcNet">$349</span></span>
+            </div>
+            <div class="sc-cell">
+              <span class="sc-label">Monthly fee</span>
+              <span class="sc-num"><span id="mcFeeAmount">$150</span></span>
+            </div>
+            <div class="sc-cell">
+              <span class="sc-label">Yearly take-home (est.)</span>
+              <span class="sc-num"><span id="mcYear">$4,192</span></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="ad-slot" aria-label="Sponsored">
+        <!-- BEGIN AADS AD UNIT 2448808 -->
+        <div class="ad-frame-wrap">
+          <iframe data-aa='2448808' src='//acceptable.a-ads.com/2448808/?size=Adaptive' title='Sponsored'
+                            class='ad-frame'></iframe>
+        </div>
+        <!-- END AADS AD UNIT 2448808 -->
+      </aside>
+
+      <section class="panel">
+        <h2>How it works</h2>
+        <p>
+          Monthly take-home is "<strong>members × price × (100 − fee)%</strong>", and the yearly figure is ×12.
+          Fee rates vary by platform and payment route — use the presets, then fine-tune. Purchases made in mobile apps
+          add App Store / Google Play fees, lowering the take-home.
+        </p>
+      </section>
+
+      <footer class="footer-links">
+        <a href="/en/superchat-calculator">Super Chat calculator</a>
+        <a href="/en/channel-revenue">Revenue estimator</a>
+        <a href="/en/superchat-colors">Super Chat colors</a>
+        <a href="/en/tools">All tools</a>
+        <a href="/membership-calculator?lang=ja" hreflang="ja" lang="ja">日本語</a>
+      </footer>
+    </main>
+
+    <script src="/tools.js" defer></script>
+    <!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1575aefabb554064b56a2098eae2b166"}'></script><!-- End Cloudflare Web Analytics -->
+  </body>
+</html>

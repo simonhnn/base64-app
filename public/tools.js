@@ -402,9 +402,56 @@
     calc();
   }
 
+  // --- メンバーシップ収益 計算機 ---
+  function initMembershipTool() {
+    const membersEl = $("mcMembers");
+    if (!membersEl) return; // このページ以外では何もしない
+    const priceEl = $("mcPrice");
+    const feeEl = $("mcFee");
+    const netOut = $("mcNet");
+    const feeOut = $("mcFeeAmount");
+    const yearOut = $("mcYear");
+
+    const cur = locale === "ja" ? "¥" : "$";
+    const localeTag = locale === "ja" ? "ja-JP" : "en-US";
+    const money = (n) =>
+      Number.isFinite(n) ? cur + formatRoundedInt(n, localeTag) : "—";
+
+    function clampFee() {
+      const fee = readNonNegative(feeEl);
+      if (!Number.isFinite(fee)) return 0;
+      return Math.min(fee, 100);
+    }
+
+    function update() {
+      const members = readNonNegative(membersEl);
+      const price = readNonNegative(priceEl);
+      const keep = (100 - clampFee()) / 100;
+      if (Number.isFinite(members) && Number.isFinite(price)) {
+        const gross = members * price;
+        const net = gross * keep;
+        if (netOut) netOut.textContent = money(net);
+        if (feeOut) feeOut.textContent = money(gross - net);
+        if (yearOut) yearOut.textContent = money(net * 12);
+      } else {
+        [netOut, feeOut, yearOut].forEach((el) => el && (el.textContent = "—"));
+      }
+    }
+
+    [membersEl, priceEl, feeEl].forEach((el) => el?.addEventListener("input", update));
+    document.querySelectorAll("[data-mc-fee]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        feeEl.value = btn.getAttribute("data-mc-fee");
+        update();
+      });
+    });
+    update();
+  }
+
   initUrlTool();
   initJsonTool();
   initHashTool();
   initSuperchatTool();
   initChannelRevenueTool();
+  initMembershipTool();
 })();

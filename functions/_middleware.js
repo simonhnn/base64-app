@@ -27,6 +27,7 @@ const JA_TO_EN = {
   "/superchat-calculator": "/en/superchat-calculator",
   "/channel-revenue": "/en/channel-revenue",
   "/superchat-colors": "/en/superchat-colors",
+  "/membership-calculator": "/en/membership-calculator",
 };
 
 // 主要な検索エンジン/SNS のクローラーを判定する（振り分け対象外にする）。

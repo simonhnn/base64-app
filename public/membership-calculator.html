@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5206748133579380" crossorigin="anonymous"></script>
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#e7eef7" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#101726" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>メンバーシップ収益 計算機｜YouTube メンバー数×月額の手取りを試算</title>
+    <meta
+      name="description"
+      content="YouTube チャンネルメンバーシップの月間・年間の手取り収益を無料で試算。会員数・月額・手数料率を入れるだけ。PC/アプリの手数料の違いにも対応。計算はすべてブラウザ内で行います。"
+    />
+    <meta name="robots" content="index,follow" />
+    <meta name="google-site-verification" content="77MztDN2EmCFP3QrmE3aG4WmQ941w2QQJwKbZX2R0nE" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="メンバーシップ収益 計算機" />
+    <meta property="og:description" content="YouTube メンバーシップの手取り収益をブラウザ内で試算。" />
+    <meta property="og:url" content="https://base64-app-2he.pages.dev/membership-calculator" />
+    <meta property="og:image" content="https://base64-app-2he.pages.dev/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="オンライン変換ツール" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="canonical" href="https://base64-app-2he.pages.dev/membership-calculator" />
+    <link rel="alternate" hreflang="ja" href="https://base64-app-2he.pages.dev/membership-calculator" />
+    <link rel="alternate" hreflang="en" href="https://base64-app-2he.pages.dev/en/membership-calculator" />
+    <link rel="alternate" hreflang="x-default" href="https://base64-app-2he.pages.dev/membership-calculator" />
+    <link rel="stylesheet" href="/style.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "メンバーシップ収益 計算機",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Any",
+        "url": "https://base64-app-2he.pages.dev/membership-calculator",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" },
+        "browserRequirements": "JavaScript",
+        "inLanguage": ["ja", "en"],
+        "description": "YouTube メンバーシップの手取り収益をブラウザ内で試算する無料ツール。"
+      }
+    </script>
+  </head>
+  <body>
+    <main class="container">
+      <header class="header">
+        <h1>メンバーシップ収益 計算機</h1>
+        <p>YouTube チャンネルメンバーシップの<strong>月間・年間の手取り</strong>を、会員数・月額・手数料率から試算します。計算はブラウザ内で行います。</p>
+      </header>
+
+      <section class="panel">
+        <div class="panel-head"><h2>入力</h2></div>
+        <div class="panel-body">
+          <div class="sc-grid">
+            <div class="sc-field">
+              <label for="mcMembers">メンバー数（人）</label>
+              <input id="mcMembers" class="sc-input" type="number" inputmode="numeric" min="0" step="1" value="100" />
+            </div>
+            <div class="sc-field">
+              <label for="mcPrice">月額（円）</label>
+              <input id="mcPrice" class="sc-input" type="number" inputmode="numeric" min="0" step="10" value="490" />
+            </div>
+          </div>
+          <div class="sc-field" style="margin-top:0.9rem;max-width:280px">
+            <label for="mcFee">手数料率（%）</label>
+            <input id="mcFee" class="sc-input" type="number" inputmode="decimal" min="0" max="100" step="0.1" value="30" />
+          </div>
+          <div class="sc-presets" aria-label="手数料率の目安を入力">
+            <button type="button" class="sc-chip" data-mc-fee="30">Web（約30%）</button>
+            <button type="button" class="sc-chip" data-mc-fee="45">アプリ（約45%）</button>
+            <button type="button" class="sc-chip" data-mc-fee="0">手数料なし（0%）</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head"><h2>手取り</h2></div>
+        <div class="panel-body">
+          <div class="sc-result">
+            <div class="sc-cell sc-primary">
+              <span class="sc-label">月間の手取り</span>
+              <span class="sc-num"><span id="mcNet">¥34,300</span></span>
+            </div>
+            <div class="sc-cell">
+              <span class="sc-label">月間の手数料</span>
+              <span class="sc-num"><span id="mcFeeAmount">¥14,700</span></span>
+            </div>
+            <div class="sc-cell">
+              <span class="sc-label">年間の手取り（目安）</span>
+              <span class="sc-num"><span id="mcYear">¥411,600</span></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="ad-slot" aria-label="広告">
+        <!-- BEGIN AADS AD UNIT 2448808 -->
+        <div class="ad-frame-wrap">
+          <iframe data-aa='2448808' src='//acceptable.a-ads.com/2448808/?size=Adaptive' title='広告'
+                            class='ad-frame'></iframe>
+        </div>
+        <!-- END AADS AD UNIT 2448808 -->
+      </aside>
+
+      <section class="panel">
+        <h2>計算方法</h2>
+        <p>
+          「<strong>メンバー数 × 月額 ×（100 − 手数料率）%</strong>」で月間の手取りを求め、12 倍して年間の目安を表示します。
+          手数料率はプラットフォームや決済経路で変わるため、プリセットで目安を入れてから自由に調整してください。
+          スマホアプリ経由の課金は App Store / Google Play の手数料が上乗せされ、手取りが下がる傾向があります。
+        </p>
+      </section>
+
+      <section class="panel">
+        <h2>関連ツール</h2>
+        <p>
+          スパチャの手取りは<a href="/superchat-calculator">スパチャ手取り計算機</a>、金額別の色は<a href="/superchat-colors">スパチャの色一覧</a>、
+          チャンネルの広告収益の概算は<a href="/channel-revenue">配信者 予想収益シミュレーター</a>、収益全体の仕組みは<a href="/vtuber-income">VTuber・配信者の収益の仕組み</a>をどうぞ。
+        </p>
+      </section>
+
+      <footer class="footer-links">
+        <a href="/superchat-calculator">スパチャ手取り計算機</a>
+        <a href="/channel-revenue">配信者 予想収益</a>
+        <a href="/superchat-colors">スパチャの色一覧</a>
+        <a href="/tools">ツール一覧</a>
+        <a href="/en/membership-calculator" hreflang="en" lang="en">English</a>
+      </footer>
+    </main>
+
+    <script src="/tools.js" defer></script>
+    <!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1575aefabb554064b56a2098eae2b166"}'></script><!-- End Cloudflare Web Analytics -->
+  </body>
+</html>
