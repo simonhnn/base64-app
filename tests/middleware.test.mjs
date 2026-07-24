@@ -41,10 +41,17 @@ describe("_middleware 言語振り分け", () => {
   });
 
   it("配下のコンテンツページも対応する英語版へ振り分ける", async () => {
-    const response = await run("/faq.html", { "Accept-Language": "fr-FR,fr;q=0.9" });
+    const response = await run("/faq", { "Accept-Language": "fr-FR,fr;q=0.9" });
 
     expect(response.status).to.equal(302);
-    expect(response.headers.get("Location")).to.equal("https://example.com/en/faq.html");
+    expect(response.headers.get("Location")).to.equal("https://example.com/en/faq");
+  });
+
+  it("拡張子なしのツールページ（クリーンURL）も振り分ける", async () => {
+    const response = await run("/json-format", { "Accept-Language": "en-US" });
+
+    expect(response.status).to.equal(302);
+    expect(response.headers.get("Location")).to.equal("https://example.com/en/json-format");
   });
 
   it("日本語を希望する訪問者はリダイレクトせず日本語ページを返す", async () => {

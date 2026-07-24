@@ -11,15 +11,18 @@
 //     そのままインデックスされるようにする。
 
 // 日本語ルートページ → 英語版のマッピング。ここに載っているパスだけが対象。
+// Cloudflare Pages は /foo.html を /foo へ 308 正規化するため、実際に配信される
+// クリーン URL（拡張子なし）をキー/値にする。旧 .html リンクは 308 で /foo に
+// なってからこの middleware が振り分ける。
 const JA_TO_EN = {
   "/": "/en/",
-  "/how-to-use.html": "/en/how-to-use.html",
-  "/faq.html": "/en/faq.html",
-  "/privacy.html": "/en/privacy.html",
-  "/tools.html": "/en/tools.html",
-  "/url-encode.html": "/en/url-encode.html",
-  "/json-format.html": "/en/json-format.html",
-  "/hash.html": "/en/hash.html",
+  "/how-to-use": "/en/how-to-use",
+  "/faq": "/en/faq",
+  "/privacy": "/en/privacy",
+  "/tools": "/en/tools",
+  "/url-encode": "/en/url-encode",
+  "/json-format": "/en/json-format",
+  "/hash": "/en/hash",
 };
 
 // 主要な検索エンジン/SNS のクローラーを判定する（振り分け対象外にする）。
