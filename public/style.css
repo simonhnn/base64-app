@@ -224,6 +224,28 @@ html[lang="en"] .ad-slot::before {
   color: var(--primary);
 }
 
+/* --- トップの他ツール導線 --- */
+.tool-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+}
+
+.tool-nav a {
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--primary);
+  text-decoration: none;
+  font-size: 0.88rem;
+}
+
+.tool-nav a:hover {
+  border-color: var(--primary);
+}
+
 /* --- ツールページ共通 --- */
 .sr-only {
   position: absolute;
