@@ -94,6 +94,17 @@
     }
   }
 
+  // 入力欄から 0 以上の有限数を読む。空欄・不正・負値は NaN を返す（計算機共通）。
+  function readNonNegative(el) {
+    const v = parseFloat(el?.value);
+    return Number.isFinite(v) && v >= 0 ? v : NaN;
+  }
+
+  // 数値を四捨五入してロケール区切りの文字列にする。非数は "—"（計算機共通）。
+  function formatRoundedInt(n, localeTag) {
+    return Number.isFinite(n) ? Math.round(n).toLocaleString(localeTag) : "—";
+  }
+
   // --- URL エンコード/デコード ---
   function initUrlTool() {
     const input = $("urlInput");
@@ -214,15 +225,12 @@
     const netRateOut = $("scNetRate");
     const grossOut = $("scGross");
 
-    const yen = (n) =>
-      Number.isFinite(n) ? Math.round(n).toLocaleString("ja-JP") : "—";
+    const yen = (n) => formatRoundedInt(n, "ja-JP");
 
     function clampFee() {
-      let fee = parseFloat(feeEl.value);
-      if (!Number.isFinite(fee)) fee = 0;
-      if (fee < 0) fee = 0;
-      if (fee > 100) fee = 100;
-      return fee;
+      const fee = readNonNegative(feeEl);
+      if (!Number.isFinite(fee)) return 0;
+      return Math.min(fee, 100);
     }
 
     function update() {
@@ -230,26 +238,22 @@
       const keepRate = (100 - fee) / 100;
 
       // 金額 → 手取り
-      const amount = parseFloat(amountEl.value);
-      if (Number.isFinite(amount) && amount >= 0) {
+      const amount = readNonNegative(amountEl);
+      if (Number.isFinite(amount)) {
         const net = amount * keepRate;
         if (feeAmountOut) feeAmountOut.textContent = yen(amount - net);
         if (netOut) netOut.textContent = yen(net);
-        if (netRateOut) netRateOut.textContent = (keepRate * 100).toFixed(1);
       } else {
         if (feeAmountOut) feeAmountOut.textContent = "—";
         if (netOut) netOut.textContent = "—";
-        if (netRateOut) netRateOut.textContent = (keepRate * 100).toFixed(1);
       }
+      if (netRateOut) netRateOut.textContent = (keepRate * 100).toFixed(1);
 
       // 目標手取り → 必要な投げ銭額（逆算）
       if (grossOut && targetEl) {
-        const target = parseFloat(targetEl.value);
-        if (Number.isFinite(target) && target >= 0 && keepRate > 0) {
-          grossOut.textContent = yen(target / keepRate);
-        } else {
-          grossOut.textContent = "—";
-        }
+        const target = readNonNegative(targetEl);
+        grossOut.textContent =
+          Number.isFinite(target) && keepRate > 0 ? yen(target / keepRate) : "—";
       }
     }
 
@@ -284,9 +288,11 @@
     const yrHigh = $("crYrHigh");
 
     const cur = locale === "ja" ? "¥" : "$";
-    const nf = new Intl.NumberFormat(locale === "ja" ? "ja-JP" : "en-US");
+    const localeTag = locale === "ja" ? "ja-JP" : "en-US";
+    const nf = new Intl.NumberFormat(localeTag);
 
-    const money = (n) => (Number.isFinite(n) ? cur + nf.format(Math.round(n)) : "—");
+    const money = (n) =>
+      Number.isFinite(n) ? cur + formatRoundedInt(n, localeTag) : "—";
 
     // URL からプラットフォームを判定（サーバーと同等の簡易版・表示用）。
     function detectPlatform(input) {
@@ -302,15 +308,10 @@
       return null;
     }
 
-    function num(el) {
-      const v = parseFloat(el.value);
-      return Number.isFinite(v) && v >= 0 ? v : NaN;
-    }
-
     function calc() {
-      const views = num(viewsEl);
-      const low = num(rpmLowEl);
-      const high = num(rpmHighEl);
+      const views = readNonNegative(viewsEl);
+      const low = readNonNegative(rpmLowEl);
+      const high = readNonNegative(rpmHighEl);
       if (!Number.isFinite(views) || !Number.isFinite(low) || !Number.isFinite(high)) {
         [monLow, monHigh, yrLow, yrHigh].forEach((el) => el && (el.textContent = "—"));
         return;
