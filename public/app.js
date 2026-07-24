@@ -1,22 +1,9 @@
 (() => {
   const MAX_LEN = 10000;
+  // 実行時に生成するメッセージのみ翻訳を持つ。画面の固定テキストは
+  // 言語別 URL（/ と /en/）の HTML に直接記述している。
   const I18N = {
     ja: {
-      pageTitle: "Base64 変換ツール",
-      pageDescription:
-        "テキストと Base64 を相互変換する無料ツールです。変換処理はブラウザで行います。",
-      appTitle: "Base64 変換ツール",
-      appDescription: "変換処理はブラウザで行います。",
-      base64Title: "Base64",
-      plainTitle: "平文",
-      base64Placeholder: "ここに【Base64】を入力",
-      plainPlaceholder: "ここに【平文】を入力",
-      convert: "変換",
-      copyBase64: "Base64 をコピー",
-      copyPlain: "平文をコピー",
-      clear: "クリア",
-      howTo: "使い方",
-      privacy: "プライバシーポリシー",
       converted: "変換しました。",
       noInput: "Base64 か平文のどちらかを入力してください。",
       inputLimit: "入力上限（10,000 文字）に達しています。",
@@ -27,21 +14,6 @@
       cleared: "入力と出力をクリアしました。",
     },
     en: {
-      pageTitle: "Base64 Converter",
-      pageDescription:
-        "A free tool to convert text and Base64. Conversion is processed in your browser.",
-      appTitle: "Base64 Converter",
-      appDescription: "Conversion is processed in your browser.",
-      base64Title: "Base64",
-      plainTitle: "Plain text",
-      base64Placeholder: "Enter [Base64] text here",
-      plainPlaceholder: "Enter [plain text] here",
-      convert: "Convert",
-      copyBase64: "Copy Base64",
-      copyPlain: "Copy plain text",
-      clear: "Clear",
-      howTo: "How to use",
-      privacy: "Privacy policy",
       converted: "Converted.",
       noInput: "Please enter either Base64 or plain text.",
       inputLimit: "Input limit (10,000 characters) reached.",
@@ -53,41 +25,23 @@
     },
   };
 
-  const appTitle = document.getElementById("appTitle");
-  const appDescription = document.getElementById("appDescription");
-  const base64Title = document.getElementById("base64Title");
-  const plainTitle = document.getElementById("plainTitle");
   const base64Text = document.getElementById("base64Text");
   const plainText = document.getElementById("plainText");
   const convertBtn = document.getElementById("convertBtn");
-  const convertLabel = document.getElementById("convertLabel");
   const copyBase64Btn = document.getElementById("copyBase64Btn");
   const copyPlainBtn = document.getElementById("copyPlainBtn");
   const clearBtn = document.getElementById("clearBtn");
-  const howToLink = document.getElementById("howToLink");
-  const privacyLink = document.getElementById("privacyLink");
   const statusMessage = document.getElementById("statusMessage");
 
   let lastEdited = "plain";
   const sentLogKeys = new Set();
 
   function detectLocale() {
-    // 言語ごとに URL を分けているため、まずページ自身の宣言（<html lang>）を優先する。
-    // これにより、そのURLで固定表示され、検索エンジンにインデックスされた内容と一致する。
+    // 言語ごとに URL を分離し、各ページが <html lang> を宣言しているため、
+    // その宣言だけで実行時メッセージ（変換結果やエラー等）の言語を決める。
+    // ブラウザ設定に応じた振り分けはサーバー側の _middleware.js が担う。既定は英語。
     const declared = String(document.documentElement.lang || "").trim().toLowerCase();
-    if (declared.startsWith("ja")) {
-      return "ja";
-    }
-    if (declared.startsWith("en")) {
-      return "en";
-    }
-
-    // lang 未指定の場合のみブラウザ設定にフォールバックする。
-    const candidates = Array.isArray(navigator.languages) && navigator.languages.length > 0
-      ? navigator.languages
-      : [navigator.language || "en"];
-    const isJapanese = candidates.some((lang) => String(lang).toLowerCase().startsWith("ja"));
-    return isJapanese ? "ja" : "en";
+    return declared.startsWith("ja") ? "ja" : "en";
   }
 
   const locale = detectLocale();
@@ -99,32 +53,6 @@
   function setStatus(message, isError = false) {
     statusMessage.textContent = message;
     statusMessage.classList.toggle("error", isError);
-  }
-
-
-  function applyLanguage() {
-    document.documentElement.lang = locale;
-    document.title = t("pageTitle");
-
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute("content", t("pageDescription"));
-    }
-
-    appTitle.textContent = t("appTitle");
-    appDescription.textContent = t("appDescription");
-    base64Title.textContent = t("base64Title");
-    plainTitle.textContent = t("plainTitle");
-    base64Text.placeholder = t("base64Placeholder");
-    plainText.placeholder = t("plainPlaceholder");
-    convertLabel.textContent = t("convert");
-    copyBase64Btn.setAttribute("aria-label", t("copyBase64"));
-    copyBase64Btn.setAttribute("title", t("copyBase64"));
-    copyPlainBtn.setAttribute("aria-label", t("copyPlain"));
-    copyPlainBtn.setAttribute("title", t("copyPlain"));
-    clearBtn.textContent = t("clear");
-    howToLink.textContent = t("howTo");
-    privacyLink.textContent = t("privacy");
   }
 
   function bytesToBase64(bytes) {
@@ -368,6 +296,5 @@
     }
   }
 
-  applyLanguage();
   registerWebMcpTools();
 })();

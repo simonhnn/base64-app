@@ -9,7 +9,7 @@ const appFileUrl = pathToFileURL(path.resolve("public/app.js")).href;
 function createTestDom(language = "ja-JP") {
   const dom = new JSDOM(
     `<!doctype html>
-    <html>
+    <html lang="${language}">
       <head>
         <meta name="description" content="" />
       </head>
@@ -211,33 +211,19 @@ describe("フロント変換処理", () => {
     expect(fetchCalls.length).to.equal(1);
   });
 
-  it("ブラウザが日本語以外なら英語表示になる", async () => {
+  it("英語ページ(lang=en)では実行時メッセージが英語になる", async () => {
+    // 表示言語はページの <html lang> 宣言で決まる（ブラウザ設定は参照しない）。
     createTestDom("en-US");
     fetchCalls = [];
     globalThis.fetch = async () => ({ ok: true });
 
     await import(`${appFileUrl}?test=${Date.now()}-en`);
 
-    const title = document.getElementById("appTitle");
     const convertBtn = document.getElementById("convertBtn");
+    const status = document.getElementById("statusMessage");
 
-    expect(title.textContent).to.equal("Base64 Converter");
-    expect(convertBtn.textContent).to.equal("Convert");
-  });
-
-  it("ページのlang宣言がブラウザ言語より優先される（URL分離用）", async () => {
-    // 日本語ブラウザでも、英語ページ(lang=en)なら英語表示になる
-    createTestDom("ja-JP");
-    document.documentElement.lang = "en";
-    fetchCalls = [];
-    globalThis.fetch = async () => ({ ok: true });
-
-    await import(`${appFileUrl}?test=${Date.now()}-langattr`);
-
-    const title = document.getElementById("appTitle");
-    const convertBtn = document.getElementById("convertBtn");
-    expect(title.textContent).to.equal("Base64 Converter");
-    expect(convertBtn.textContent).to.equal("Convert");
+    convertBtn.click(); // 未入力のまま変換
+    expect(status.textContent).to.equal("Please enter either Base64 or plain text.");
   });
 
   it("WebMCP対応環境ではツールが登録され実行できる", async () => {
