@@ -137,6 +137,15 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://base64-app-2he.pages.dev/superchat-colors</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://base64-app-2he.pages.dev/superchat-colors" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://base64-app-2he.pages.dev/en/superchat-colors" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://base64-app-2he.pages.dev/superchat-colors" />
+    <lastmod>2026-07-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://base64-app-2he.pages.dev/en/</loc>
     <xhtml:link rel="alternate" hreflang="ja" href="https://base64-app-2he.pages.dev/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://base64-app-2he.pages.dev/en/" />
@@ -231,6 +240,15 @@
     <xhtml:link rel="alternate" hreflang="ja" href="https://base64-app-2he.pages.dev/channel-revenue" />
     <xhtml:link rel="alternate" hreflang="en" href="https://base64-app-2he.pages.dev/en/channel-revenue" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://base64-app-2he.pages.dev/channel-revenue" />
+    <lastmod>2026-07-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://base64-app-2he.pages.dev/en/superchat-colors</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://base64-app-2he.pages.dev/superchat-colors" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://base64-app-2he.pages.dev/en/superchat-colors" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://base64-app-2he.pages.dev/superchat-colors" />
     <lastmod>2026-07-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

@@ -645,3 +645,14 @@ textarea[readonly] {
   white-space: nowrap;
 }
 .home-promo a:hover { text-decoration: underline; }
+
+/* ---- スパチャ色早見表: 色見本 ---- */
+.sc-color {
+  display: inline-block;
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 3px;
+  margin-right: 0.4rem;
+  vertical-align: -1px;
+  border: 1px solid color-mix(in srgb, var(--text) 25%, transparent 75%);
+}
