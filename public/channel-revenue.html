@@ -49,18 +49,19 @@
     <main class="container">
       <header class="header">
         <h1>配信者 予想収益シミュレーター</h1>
-        <p>YouTube・Twitch・ツイキャスのチャンネル URL を貼ると、公開統計から<strong>広告収益の概算</strong>を試算します。数値は編集でき、計算はブラウザ内で行います。</p>
+        <p><strong>YouTube・Twitch・ツイキャス（TwitCasting）</strong>のチャンネル URL を貼るだけで、公開統計から<strong>広告収益の概算</strong>を試算します。数値は編集でき、計算はブラウザ内で行います。</p>
       </header>
 
       <p class="disclaimer" role="note">
         ⚠ 表示される金額は RPM（1,000再生あたり収益）を仮定した<strong>予想値（概算）</strong>です。実際の収益とは大きく異なる場合があり、
-        本サイトは YouTube・Twitch・TwitCasting とは<strong>一切関係ありません</strong>。スパチャ・メンバーシップ・案件収入などは含みません。
+        本サイトは YouTube・Twitch・TwitCasting とは<strong>一切関係ありません</strong>。
       </p>
 
       <section class="panel">
         <div class="panel-head"><h2>チャンネル URL</h2></div>
         <div class="panel-body">
-          <input id="crUrl" class="sc-input" type="url" inputmode="url" placeholder="例: https://www.youtube.com/@example" />
+          <p class="cr-platforms"><strong>対応：</strong><span class="cr-tag">YouTube</span><span class="cr-tag">Twitch</span><span class="cr-tag">ツイキャス（TwitCasting）</span></p>
+          <input id="crUrl" class="sc-input" type="url" inputmode="url" placeholder="例: https://www.youtube.com/@example ／ https://twitch.tv/name ／ https://twitcasting.tv/name" />
           <div class="tool-actions" style="margin-top:0.6rem">
             <button id="crFetchBtn" type="button">統計を取得して試算</button>
           </div>
@@ -133,7 +134,7 @@
         <h2>注意事項</h2>
         <ul>
           <li>表示額は<strong>予想（概算）</strong>であり、実際の収益・確定額ではありません。</li>
-          <li><strong>広告収益のみ</strong>の目安です。スーパーチャット（スパチャ）・メンバーシップ・企業案件・グッズなどは含みません。</li>
+          <li>この試算は「<strong>再生数 × RPM</strong>」による目安で、ジャンル・国・時期で大きく変動します。</li>
           <li>本サイトは YouTube・Twitch・TwitCasting および各配信者と<strong>関係ありません</strong>。</li>
           <li>スパチャの手取りは <a href="/superchat-calculator">スパチャ手取り計算機</a> でも試算できます。仕組みは <a href="/superchat-tesuryo">こちらの解説</a>をどうぞ。</li>
         </ul>

@@ -7,10 +7,10 @@
     <meta name="theme-color" media="(prefers-color-scheme: light)" content="#e7eef7" />
     <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#101726" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <title>Streamer Revenue Estimator | Estimate Earnings from a Channel URL</title>
+    <title>VTuber & Streamer Revenue Estimator | YouTube, Twitch & TwitCasting</title>
     <meta
       name="description"
-      content="Paste a YouTube, Twitch, or TwitCasting channel URL to estimate monthly and yearly ad revenue from public stats. Adjustable RPM. Estimates only — not actual earnings and not affiliated with any platform. Runs in your browser."
+      content="Estimate a VTuber or streamer's ad revenue from a channel URL — YouTube, Twitch, and Japan's TwitCasting all supported. Paste a URL to pull public stats and get an estimated monthly and yearly range. Adjustable RPM, estimates only, runs in your browser."
     />
     <meta name="robots" content="index,follow" />
     <meta name="google-site-verification" content="77MztDN2EmCFP3QrmE3aG4WmQ941w2QQJwKbZX2R0nE" />
@@ -48,19 +48,20 @@
   <body>
     <main class="container">
       <header class="header">
-        <h1>Streamer Revenue Estimator</h1>
-        <p>Paste a YouTube, Twitch, or TwitCasting channel URL to estimate <strong>ad revenue</strong> from public stats. Numbers are editable and everything is calculated in your browser.</p>
+        <h1>VTuber &amp; Streamer Revenue Estimator</h1>
+        <p>Paste a <strong>YouTube, Twitch, or TwitCasting</strong> channel URL to estimate <strong>ad revenue</strong> from public stats. Great for sizing up <strong>VTuber</strong> earnings — including creators on Japan's <strong>TwitCasting (ツイキャス)</strong>, where many VTubers stream. Numbers are editable and everything is calculated in your browser.</p>
       </header>
 
       <p class="disclaimer" role="note">
         ⚠ The figures shown are <strong>estimates</strong> based on an assumed RPM (revenue per 1,000 views). Actual earnings can differ greatly,
-        and this site is <strong>not affiliated</strong> with YouTube, Twitch, or TwitCasting. Super Chats, memberships, and sponsorships are not included.
+        and this site is <strong>not affiliated</strong> with YouTube, Twitch, or TwitCasting.
       </p>
 
       <section class="panel">
         <div class="panel-head"><h2>Channel URL</h2></div>
         <div class="panel-body">
-          <input id="crUrl" class="sc-input" type="url" inputmode="url" placeholder="e.g. https://www.youtube.com/@example" />
+          <p class="cr-platforms"><strong>Supported:</strong><span class="cr-tag">YouTube</span><span class="cr-tag">Twitch</span><span class="cr-tag">TwitCasting (ツイキャス)</span></p>
+          <input id="crUrl" class="sc-input" type="url" inputmode="url" placeholder="e.g. https://www.youtube.com/@example  |  https://twitch.tv/name  |  https://twitcasting.tv/name" />
           <div class="tool-actions" style="margin-top:0.6rem">
             <button id="crFetchBtn" type="button">Fetch stats &amp; estimate</button>
           </div>
@@ -133,7 +134,7 @@
         <h2>Important notes</h2>
         <ul>
           <li>Figures are <strong>estimates</strong>, not actual or confirmed earnings.</li>
-          <li>They cover <strong>ad revenue only</strong> — Super Chats, memberships, sponsorships, and merch are excluded.</li>
+          <li>The estimate is based on "<strong>views × RPM</strong>" and varies widely by genre, country, and season.</li>
           <li>This site is <strong>not affiliated</strong> with YouTube, Twitch, TwitCasting, or any creator.</li>
         </ul>
       </section>
