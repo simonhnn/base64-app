@@ -16,6 +16,10 @@ const JA_TO_EN = {
   "/how-to-use.html": "/en/how-to-use.html",
   "/faq.html": "/en/faq.html",
   "/privacy.html": "/en/privacy.html",
+  "/tools.html": "/en/tools.html",
+  "/url-encode.html": "/en/url-encode.html",
+  "/json-format.html": "/en/json-format.html",
+  "/hash.html": "/en/hash.html",
 };
 
 // 主要な検索エンジン/SNS のクローラーを判定する（振り分け対象外にする）。

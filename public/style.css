@@ -217,10 +217,82 @@ html[lang="en"] .ad-slot::before {
   margin-top: 1rem;
   display: flex;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .footer-links a {
   color: var(--primary);
+}
+
+/* --- ツールページ共通 --- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.tool-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.tool-actions .secondary {
+  flex: 0 0 auto;
+}
+
+select {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 0.5rem 0.6rem;
+  font-size: 0.94rem;
+}
+
+textarea[readonly] {
+  background: color-mix(in srgb, var(--surface) 92%, var(--text) 8%);
+}
+
+.tool-list {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.tool-list a {
+  display: block;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  color: inherit;
+  text-decoration: none;
+}
+
+.tool-list a:hover {
+  border-color: var(--primary);
+}
+
+.tool-list strong {
+  color: var(--primary);
+  font-size: 1.02rem;
+}
+
+.tool-list span {
+  display: block;
+  margin-top: 0.2rem;
+  color: var(--muted);
+  font-size: 0.9rem;
 }
 
 @media (max-width: 640px) {

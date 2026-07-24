@@ -11,6 +11,42 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://base64-app-2he.pages.dev/tools.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://base64-app-2he.pages.dev/tools.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://base64-app-2he.pages.dev/en/tools.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://base64-app-2he.pages.dev/tools.html" />
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://base64-app-2he.pages.dev/url-encode.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://base64-app-2he.pages.dev/url-encode.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://base64-app-2he.pages.dev/en/url-encode.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://base64-app-2he.pages.dev/url-encode.html" />
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://base64-app-2he.pages.dev/json-format.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://base64-app-2he.pages.dev/json-format.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://base64-app-2he.pages.dev/en/json-format.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://base64-app-2he.pages.dev/json-format.html" />
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://base64-app-2he.pages.dev/hash.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://base64-app-2he.pages.dev/hash.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://base64-app-2he.pages.dev/en/hash.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://base64-app-2he.pages.dev/hash.html" />
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://base64-app-2he.pages.dev/faq.html</loc>
     <xhtml:link rel="alternate" hreflang="ja" href="https://base64-app-2he.pages.dev/faq.html" />
     <xhtml:link rel="alternate" hreflang="en" href="https://base64-app-2he.pages.dev/en/faq.html" />
@@ -45,6 +81,42 @@
     <lastmod>2026-07-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://base64-app-2he.pages.dev/en/tools.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://base64-app-2he.pages.dev/tools.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://base64-app-2he.pages.dev/en/tools.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://base64-app-2he.pages.dev/tools.html" />
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://base64-app-2he.pages.dev/en/url-encode.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://base64-app-2he.pages.dev/url-encode.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://base64-app-2he.pages.dev/en/url-encode.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://base64-app-2he.pages.dev/url-encode.html" />
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://base64-app-2he.pages.dev/en/json-format.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://base64-app-2he.pages.dev/json-format.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://base64-app-2he.pages.dev/en/json-format.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://base64-app-2he.pages.dev/json-format.html" />
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://base64-app-2he.pages.dev/en/hash.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://base64-app-2he.pages.dev/hash.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://base64-app-2he.pages.dev/en/hash.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://base64-app-2he.pages.dev/hash.html" />
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://base64-app-2he.pages.dev/en/faq.html</loc>

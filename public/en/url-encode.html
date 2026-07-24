@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#e7eef7" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#101726" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>URL Encode / Decode | Online Converter</title>
+    <meta
+      name="description"
+      content="Free online URL (percent) encoder and decoder. Encode or decode text and query strings entirely in your browser — nothing is sent to a server."
+    />
+    <meta name="robots" content="index,follow" />
+    <meta name="google-site-verification" content="77MztDN2EmCFP3QrmE3aG4WmQ941w2QQJwKbZX2R0nE" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="URL Encode / Decode" />
+    <meta property="og:description" content="Free in-browser URL encoder and decoder." />
+    <meta property="og:url" content="https://base64-app-2he.pages.dev/en/url-encode.html" />
+    <meta property="og:site_name" content="Online Converter Tools" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="ja_JP" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="canonical" href="https://base64-app-2he.pages.dev/en/url-encode.html" />
+    <link rel="alternate" hreflang="en" href="https://base64-app-2he.pages.dev/en/url-encode.html" />
+    <link rel="alternate" hreflang="ja" href="https://base64-app-2he.pages.dev/url-encode.html" />
+    <link rel="alternate" hreflang="x-default" href="https://base64-app-2he.pages.dev/url-encode.html" />
+    <link rel="stylesheet" href="/style.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "URL Encode / Decode",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "url": "https://base64-app-2he.pages.dev/en/url-encode.html",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "browserRequirements": "JavaScript",
+        "inLanguage": ["en", "ja"],
+        "description": "Free in-browser URL (percent) encoder and decoder."
+      }
+    </script>
+  </head>
+  <body>
+    <main class="container">
+      <header class="header">
+        <h1>URL Encode / Decode</h1>
+        <p>Percent-encode or decode URLs entirely in your browser.</p>
+      </header>
+
+      <section class="panel">
+        <div class="panel-head"><h2>Input</h2></div>
+        <div class="panel-body">
+          <textarea id="urlInput" rows="6" placeholder="Enter text or a URL here"></textarea>
+        </div>
+        <div class="tool-actions">
+          <button id="urlEncodeBtn" type="button">Encode</button>
+          <button id="urlDecodeBtn" type="button">Decode</button>
+          <button id="urlClearBtn" type="button" class="secondary">Clear</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head"><h2>Result</h2></div>
+        <div class="panel-body">
+          <div class="textarea-wrap">
+            <textarea id="urlOutput" rows="6" readonly placeholder="The result appears here"></textarea>
+            <button id="urlCopyBtn" type="button" class="copy-icon" aria-label="Copy result" title="Copy result">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <rect x="9" y="9" width="11" height="11" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <p id="urlStatus" class="status" role="status" aria-live="polite"></p>
+
+      <aside class="ad-slot" aria-label="Sponsored">
+        <!-- BEGIN AADS AD UNIT 2448808 -->
+        <div id="frame" style="width: 100%;margin: auto;position: relative; z-index: 99998;">
+          <iframe data-aa='2448808' src='//acceptable.a-ads.com/2448808/?size=Adaptive' title='Sponsored'
+                            style='border:0; padding:0; width:70%; height:auto; overflow:hidden;display: block;margin: auto'></iframe>
+        </div>
+        <!-- END AADS AD UNIT 2448808 -->
+      </aside>
+
+      <section class="panel">
+        <h2>What is URL encoding?</h2>
+        <p>
+          URL encoding (percent-encoding) converts characters that are not allowed in a URL —
+          spaces, non-ASCII text, and reserved symbols — into a <code>%</code> followed by hexadecimal digits.
+          It is commonly used for query strings and form values. This tool performs
+          <code>encodeURIComponent</code> / <code>decodeURIComponent</code> style conversion in your browser and
+          never sends your input to a server.
+        </p>
+      </section>
+
+      <footer class="footer-links">
+        <a href="/en/tools.html">All tools</a>
+        <a href="/en/">Base64</a>
+        <a href="/en/faq.html">FAQ</a>
+        <a href="/en/privacy.html">Privacy policy</a>
+        <a href="/url-encode.html?lang=ja" hreflang="ja" lang="ja">日本語</a>
+      </footer>
+    </main>
+
+    <script src="/tools.js" defer></script>
+    <!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1575aefabb554064b56a2098eae2b166"}'></script><!-- End Cloudflare Web Analytics -->
+  </body>
+</html>

@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#e7eef7" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#101726" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>SHA-256 Hash Generator | SHA-1/384/512 Online</title>
+    <meta
+      name="description"
+      content="Free online SHA-256, SHA-1, SHA-384 and SHA-512 hash generator. Hashes are computed in your browser and your input is never sent to a server."
+    />
+    <meta name="robots" content="index,follow" />
+    <meta name="google-site-verification" content="77MztDN2EmCFP3QrmE3aG4WmQ941w2QQJwKbZX2R0nE" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="SHA Hash Generator" />
+    <meta property="og:description" content="Generate SHA-256/1/384/512 hashes in your browser." />
+    <meta property="og:url" content="https://base64-app-2he.pages.dev/en/hash.html" />
+    <meta property="og:site_name" content="Online Converter Tools" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="ja_JP" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="canonical" href="https://base64-app-2he.pages.dev/en/hash.html" />
+    <link rel="alternate" hreflang="en" href="https://base64-app-2he.pages.dev/en/hash.html" />
+    <link rel="alternate" hreflang="ja" href="https://base64-app-2he.pages.dev/hash.html" />
+    <link rel="alternate" hreflang="x-default" href="https://base64-app-2he.pages.dev/hash.html" />
+    <link rel="stylesheet" href="/style.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "SHA Hash Generator",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "url": "https://base64-app-2he.pages.dev/en/hash.html",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "browserRequirements": "JavaScript",
+        "inLanguage": ["en", "ja"],
+        "description": "In-browser SHA-256/1/384/512 hash generator."
+      }
+    </script>
+  </head>
+  <body>
+    <main class="container">
+      <header class="header">
+        <h1>Hash Generator (SHA)</h1>
+        <p>Compute SHA-256 and other hashes from text, in your browser.</p>
+      </header>
+
+      <section class="panel">
+        <div class="panel-head"><h2>Input</h2></div>
+        <div class="panel-body">
+          <textarea id="hashInput" rows="6" placeholder="Enter text to hash"></textarea>
+        </div>
+        <div class="tool-actions">
+          <label for="hashAlgo" class="sr-only">Algorithm</label>
+          <select id="hashAlgo" aria-label="Hash algorithm">
+            <option value="SHA-256">SHA-256</option>
+            <option value="SHA-1">SHA-1</option>
+            <option value="SHA-384">SHA-384</option>
+            <option value="SHA-512">SHA-512</option>
+          </select>
+          <button id="hashBtn" type="button">Generate</button>
+          <button id="hashClearBtn" type="button" class="secondary">Clear</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head"><h2>Result (hex)</h2></div>
+        <div class="panel-body">
+          <div class="textarea-wrap">
+            <textarea id="hashOutput" rows="4" readonly placeholder="The hash appears here"></textarea>
+            <button id="hashCopyBtn" type="button" class="copy-icon" aria-label="Copy result" title="Copy result">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <rect x="9" y="9" width="11" height="11" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <p id="hashStatus" class="status" role="status" aria-live="polite"></p>
+
+      <aside class="ad-slot" aria-label="Sponsored">
+        <!-- BEGIN AADS AD UNIT 2448808 -->
+        <div id="frame" style="width: 100%;margin: auto;position: relative; z-index: 99998;">
+          <iframe data-aa='2448808' src='//acceptable.a-ads.com/2448808/?size=Adaptive' title='Sponsored'
+                            style='border:0; padding:0; width:70%; height:auto; overflow:hidden;display: block;margin: auto'></iframe>
+        </div>
+        <!-- END AADS AD UNIT 2448808 -->
+      </aside>
+
+      <section class="panel">
+        <h2>About hashing</h2>
+        <p>
+          A hash function maps data of any length to a fixed-length value in one direction. It is used for file
+          integrity checks and data fingerprints. This tool uses the browser's built-in Web Crypto API to compute
+          SHA-256, SHA-1, SHA-384 and SHA-512 (MD5 is not supported). Your input is never sent to a server.
+        </p>
+      </section>
+
+      <footer class="footer-links">
+        <a href="/en/tools.html">All tools</a>
+        <a href="/en/">Base64</a>
+        <a href="/en/faq.html">FAQ</a>
+        <a href="/en/privacy.html">Privacy policy</a>
+        <a href="/hash.html?lang=ja" hreflang="ja" lang="ja">日本語</a>
+      </footer>
+    </main>
+
+    <script src="/tools.js" defer></script>
+    <!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1575aefabb554064b56a2098eae2b166"}'></script><!-- End Cloudflare Web Analytics -->
+  </body>
+</html>

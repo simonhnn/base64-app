@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#e7eef7" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#101726" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>SHA-256 ハッシュ生成 | SHA-1/384/512 対応 オンライン</title>
+    <meta
+      name="description"
+      content="テキストから SHA-256・SHA-1・SHA-384・SHA-512 のハッシュ値を生成する無料オンラインツール。ブラウザ内で計算し、入力をサーバーへ送信しません。"
+    />
+    <meta name="robots" content="index,follow" />
+    <meta name="google-site-verification" content="77MztDN2EmCFP3QrmE3aG4WmQ941w2QQJwKbZX2R0nE" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="SHA ハッシュ生成ツール" />
+    <meta property="og:description" content="SHA-256/1/384/512 のハッシュをブラウザ内で生成。" />
+    <meta property="og:url" content="https://base64-app-2he.pages.dev/hash.html" />
+    <meta property="og:site_name" content="オンライン変換ツール" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="canonical" href="https://base64-app-2he.pages.dev/hash.html" />
+    <link rel="alternate" hreflang="ja" href="https://base64-app-2he.pages.dev/hash.html" />
+    <link rel="alternate" hreflang="en" href="https://base64-app-2he.pages.dev/en/hash.html" />
+    <link rel="alternate" hreflang="x-default" href="https://base64-app-2he.pages.dev/hash.html" />
+    <link rel="stylesheet" href="/style.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "SHA ハッシュ生成ツール",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "url": "https://base64-app-2he.pages.dev/hash.html",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" },
+        "browserRequirements": "JavaScript",
+        "inLanguage": ["ja", "en"],
+        "description": "SHA-256/1/384/512 のハッシュ値をブラウザ内で生成するツール。"
+      }
+    </script>
+  </head>
+  <body>
+    <main class="container">
+      <header class="header">
+        <h1>ハッシュ生成（SHA）</h1>
+        <p>テキストから SHA-256 などのハッシュ値をブラウザ内で計算します。</p>
+      </header>
+
+      <section class="panel">
+        <div class="panel-head"><h2>入力</h2></div>
+        <div class="panel-body">
+          <textarea id="hashInput" rows="6" placeholder="ハッシュ化するテキストを入力"></textarea>
+        </div>
+        <div class="tool-actions">
+          <label for="hashAlgo" class="sr-only">アルゴリズム</label>
+          <select id="hashAlgo" aria-label="ハッシュアルゴリズム">
+            <option value="SHA-256">SHA-256</option>
+            <option value="SHA-1">SHA-1</option>
+            <option value="SHA-384">SHA-384</option>
+            <option value="SHA-512">SHA-512</option>
+          </select>
+          <button id="hashBtn" type="button">生成</button>
+          <button id="hashClearBtn" type="button" class="secondary">クリア</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head"><h2>結果（16進）</h2></div>
+        <div class="panel-body">
+          <div class="textarea-wrap">
+            <textarea id="hashOutput" rows="4" readonly placeholder="ハッシュ値がここに表示されます"></textarea>
+            <button id="hashCopyBtn" type="button" class="copy-icon" aria-label="結果をコピー" title="結果をコピー">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <rect x="9" y="9" width="11" height="11" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <p id="hashStatus" class="status" role="status" aria-live="polite"></p>
+
+      <aside class="ad-slot" aria-label="広告">
+        <!-- BEGIN AADS AD UNIT 2448808 -->
+        <div id="frame" style="width: 100%;margin: auto;position: relative; z-index: 99998;">
+          <iframe data-aa='2448808' src='//acceptable.a-ads.com/2448808/?size=Adaptive' title='広告'
+                            style='border:0; padding:0; width:70%; height:auto; overflow:hidden;display: block;margin: auto'></iframe>
+        </div>
+        <!-- END AADS AD UNIT 2448808 -->
+      </aside>
+
+      <section class="panel">
+        <h2>ハッシュとは</h2>
+        <p>
+          ハッシュ関数は、任意の長さのデータを固定長の値へ変換する一方向の計算です。ファイルの整合性チェックや
+          データの指紋（フィンガープリント）に使われます。本ツールはブラウザ標準の Web Crypto API を用いて
+          SHA-256・SHA-1・SHA-384・SHA-512 を計算します（MD5 には非対応）。入力はサーバーへ送信されません。
+        </p>
+      </section>
+
+      <footer class="footer-links">
+        <a href="/tools.html">ツール一覧</a>
+        <a href="/">Base64 変換</a>
+        <a href="/faq.html">FAQ・解説</a>
+        <a href="/privacy.html">プライバシーポリシー</a>
+        <a href="/en/hash.html" hreflang="en" lang="en">English</a>
+      </footer>
+    </main>
+
+    <script src="/tools.js" defer></script>
+    <!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1575aefabb554064b56a2098eae2b166"}'></script><!-- End Cloudflare Web Analytics -->
+  </body>
+</html>
