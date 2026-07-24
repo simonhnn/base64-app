@@ -202,7 +202,208 @@
     });
   }
 
+  // --- スパチャ・投げ銭 手取り計算機 ---
+  function initSuperchatTool() {
+    const amountEl = $("scAmount");
+    if (!amountEl) return; // このページ以外では何もしない
+    const feeEl = $("scFee");
+    const targetEl = $("scTarget");
+
+    const feeAmountOut = $("scFeeAmount");
+    const netOut = $("scNet");
+    const netRateOut = $("scNetRate");
+    const grossOut = $("scGross");
+
+    const yen = (n) =>
+      Number.isFinite(n) ? Math.round(n).toLocaleString("ja-JP") : "—";
+
+    function clampFee() {
+      let fee = parseFloat(feeEl.value);
+      if (!Number.isFinite(fee)) fee = 0;
+      if (fee < 0) fee = 0;
+      if (fee > 100) fee = 100;
+      return fee;
+    }
+
+    function update() {
+      const fee = clampFee();
+      const keepRate = (100 - fee) / 100;
+
+      // 金額 → 手取り
+      const amount = parseFloat(amountEl.value);
+      if (Number.isFinite(amount) && amount >= 0) {
+        const net = amount * keepRate;
+        if (feeAmountOut) feeAmountOut.textContent = yen(amount - net);
+        if (netOut) netOut.textContent = yen(net);
+        if (netRateOut) netRateOut.textContent = (keepRate * 100).toFixed(1);
+      } else {
+        if (feeAmountOut) feeAmountOut.textContent = "—";
+        if (netOut) netOut.textContent = "—";
+        if (netRateOut) netRateOut.textContent = (keepRate * 100).toFixed(1);
+      }
+
+      // 目標手取り → 必要な投げ銭額（逆算）
+      if (grossOut && targetEl) {
+        const target = parseFloat(targetEl.value);
+        if (Number.isFinite(target) && target >= 0 && keepRate > 0) {
+          grossOut.textContent = yen(target / keepRate);
+        } else {
+          grossOut.textContent = "—";
+        }
+      }
+    }
+
+    [amountEl, feeEl, targetEl].forEach((el) => {
+      el?.addEventListener("input", update);
+    });
+
+    document.querySelectorAll("[data-fee]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        feeEl.value = btn.getAttribute("data-fee");
+        update();
+      });
+    });
+
+    update();
+  }
+
+  // --- 配信者 予想収益シミュレーター（URL から概算） ---
+  function initChannelRevenueTool() {
+    const urlEl = $("crUrl");
+    if (!urlEl) return; // このページ以外では何もしない
+    const fetchBtn = $("crFetchBtn");
+    const status = $("crStatus");
+    const detected = $("crDetected");
+    const context = $("crContext");
+    const viewsEl = $("crMonthlyViews");
+    const rpmLowEl = $("crRpmLow");
+    const rpmHighEl = $("crRpmHigh");
+    const monLow = $("crMonLow");
+    const monHigh = $("crMonHigh");
+    const yrLow = $("crYrLow");
+    const yrHigh = $("crYrHigh");
+
+    const cur = locale === "ja" ? "¥" : "$";
+    const nf = new Intl.NumberFormat(locale === "ja" ? "ja-JP" : "en-US");
+
+    const money = (n) => (Number.isFinite(n) ? cur + nf.format(Math.round(n)) : "—");
+
+    // URL からプラットフォームを判定（サーバーと同等の簡易版・表示用）。
+    function detectPlatform(input) {
+      try {
+        const u = new URL(String(input).trim());
+        const h = u.hostname.replace(/^www\./, "").toLowerCase();
+        if (h.includes("youtu")) return "YouTube";
+        if (h === "twitch.tv") return "Twitch";
+        if (h === "twitcasting.tv") return "ツイキャス";
+      } catch {
+        /* noop */
+      }
+      return null;
+    }
+
+    function num(el) {
+      const v = parseFloat(el.value);
+      return Number.isFinite(v) && v >= 0 ? v : NaN;
+    }
+
+    function calc() {
+      const views = num(viewsEl);
+      const low = num(rpmLowEl);
+      const high = num(rpmHighEl);
+      if (!Number.isFinite(views) || !Number.isFinite(low) || !Number.isFinite(high)) {
+        [monLow, monHigh, yrLow, yrHigh].forEach((el) => el && (el.textContent = "—"));
+        return;
+      }
+      const mLow = (views / 1000) * low;
+      const mHigh = (views / 1000) * high;
+      if (monLow) monLow.textContent = money(mLow);
+      if (monHigh) monHigh.textContent = money(mHigh);
+      if (yrLow) yrLow.textContent = money(mLow * 12);
+      if (yrHigh) yrHigh.textContent = money(mHigh * 12);
+    }
+
+    async function lookup() {
+      const url = urlEl.value.trim();
+      const platform = detectPlatform(url);
+      if (!platform) {
+        setStatus(
+          status,
+          locale === "ja"
+            ? "YouTube / Twitch / ツイキャス のチャンネル URL を入力してください。"
+            : "Enter a YouTube / Twitch / TwitCasting channel URL.",
+          true
+        );
+        return;
+      }
+      if (detected) {
+        detected.textContent =
+          (locale === "ja" ? "判定: " : "Detected: ") + platform;
+      }
+      setStatus(status, locale === "ja" ? "統計を取得中…" : "Fetching stats…", false);
+
+      let data = null;
+      try {
+        const res = await fetch("/api/estimate", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ url }),
+        });
+        data = await res.json();
+      } catch {
+        data = null;
+      }
+
+      if (data && data.available) {
+        if (data.name && detected) {
+          detected.textContent =
+            (locale === "ja" ? "判定: " : "Detected: ") + platform + " / " + data.name;
+        }
+        if (Number.isFinite(data.views30d) && data.views30d > 0) {
+          viewsEl.value = String(data.views30d);
+        }
+        const bits = [];
+        if (Number.isFinite(data.subscribers) && data.subscribers)
+          bits.push((locale === "ja" ? "登録者 " : "Subs ") + nf.format(data.subscribers));
+        if (Number.isFinite(data.followers) && data.followers)
+          bits.push((locale === "ja" ? "フォロワー " : "Followers ") + nf.format(data.followers));
+        if (Number.isFinite(data.totalViews) && data.totalViews)
+          bits.push((locale === "ja" ? "総再生 " : "Total views ") + nf.format(data.totalViews));
+        if (context) context.textContent = bits.join(" ・ ");
+        setStatus(
+          status,
+          locale === "ja"
+            ? "統計を反映しました。数値は編集できます。"
+            : "Stats applied. You can edit the numbers.",
+          false
+        );
+      } else {
+        if (context) context.textContent = "";
+        setStatus(
+          status,
+          locale === "ja"
+            ? "自動取得できませんでした。月間再生数を入力すると概算できます。"
+            : "Could not auto-fetch. Enter monthly views to estimate.",
+          false
+        );
+      }
+      calc();
+    }
+
+    fetchBtn?.addEventListener("click", lookup);
+    urlEl.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        lookup();
+      }
+    });
+    [viewsEl, rpmLowEl, rpmHighEl].forEach((el) => el?.addEventListener("input", calc));
+    calc();
+  }
+
   initUrlTool();
   initJsonTool();
   initHashTool();
+  initSuperchatTool();
+  initChannelRevenueTool();
 })();

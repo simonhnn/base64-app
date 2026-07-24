@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5206748133579380" crossorigin="anonymous"></script>
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#e7eef7" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#101726" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>配信者 予想収益シミュレーター｜YouTube・Twitch・ツイキャスのURLで概算</title>
+    <meta
+      name="description"
+      content="YouTube・Twitch・ツイキャスのチャンネルURLを貼ると、公開統計から広告収益の概算（月間・年間）を試算します。RPMは自由に調整可能。あくまで予想値で、実際の収益や各社とは無関係です。計算はブラウザ内で行います。"
+    />
+    <meta name="robots" content="index,follow" />
+    <meta name="google-site-verification" content="77MztDN2EmCFP3QrmE3aG4WmQ941w2QQJwKbZX2R0nE" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="配信者 予想収益シミュレーター" />
+    <meta property="og:description" content="チャンネルURLから広告収益の概算を試算（YouTube/Twitch/ツイキャス）。予想値です。" />
+    <meta property="og:url" content="https://base64-app-2he.pages.dev/channel-revenue" />
+    <meta property="og:image" content="https://base64-app-2he.pages.dev/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="オンライン変換ツール" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="canonical" href="https://base64-app-2he.pages.dev/channel-revenue" />
+    <link rel="alternate" hreflang="ja" href="https://base64-app-2he.pages.dev/channel-revenue" />
+    <link rel="alternate" hreflang="en" href="https://base64-app-2he.pages.dev/en/channel-revenue" />
+    <link rel="alternate" hreflang="x-default" href="https://base64-app-2he.pages.dev/channel-revenue" />
+    <link rel="stylesheet" href="/style.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "配信者 予想収益シミュレーター",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Any",
+        "url": "https://base64-app-2he.pages.dev/channel-revenue",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" },
+        "browserRequirements": "JavaScript",
+        "inLanguage": ["ja", "en"],
+        "description": "YouTube・Twitch・ツイキャスのチャンネルURLから広告収益の概算を試算する無料ツール。予想値です。"
+      }
+    </script>
+  </head>
+  <body>
+    <main class="container">
+      <header class="header">
+        <h1>配信者 予想収益シミュレーター</h1>
+        <p>YouTube・Twitch・ツイキャスのチャンネル URL を貼ると、公開統計から<strong>広告収益の概算</strong>を試算します。数値は編集でき、計算はブラウザ内で行います。</p>
+      </header>
+
+      <p class="disclaimer" role="note">
+        ⚠ 表示される金額は RPM（1,000再生あたり収益）を仮定した<strong>予想値（概算）</strong>です。実際の収益とは大きく異なる場合があり、
+        本サイトは YouTube・Twitch・TwitCasting とは<strong>一切関係ありません</strong>。スパチャ・メンバーシップ・案件収入などは含みません。
+      </p>
+
+      <section class="panel">
+        <div class="panel-head"><h2>チャンネル URL</h2></div>
+        <div class="panel-body">
+          <input id="crUrl" class="sc-input" type="url" inputmode="url" placeholder="例: https://www.youtube.com/@example" />
+          <div class="tool-actions" style="margin-top:0.6rem">
+            <button id="crFetchBtn" type="button">統計を取得して試算</button>
+          </div>
+          <p id="crDetected" class="cr-detected"></p>
+          <p id="crContext" class="cr-context"></p>
+          <p id="crStatus" class="status" role="status" aria-live="polite"></p>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head"><h2>試算の条件</h2></div>
+        <div class="panel-body">
+          <div class="sc-grid">
+            <div class="sc-field">
+              <label for="crMonthlyViews">月間再生数（回）</label>
+              <input id="crMonthlyViews" class="sc-input" type="number" inputmode="numeric" min="0" step="1000" value="100000" />
+            </div>
+            <div class="sc-field">
+              <label>RPM（1,000再生あたり収益・円）</label>
+              <div style="display:flex;gap:0.5rem;align-items:center">
+                <input id="crRpmLow" class="sc-input" type="number" inputmode="decimal" min="0" step="10" value="50" aria-label="RPM 下限" />
+                <span aria-hidden="true">〜</span>
+                <input id="crRpmHigh" class="sc-input" type="number" inputmode="decimal" min="0" step="10" value="500" aria-label="RPM 上限" />
+              </div>
+            </div>
+          </div>
+          <p class="hm-note">URL から自動取得できた場合は「月間再生数」に直近30日の推定再生数が入ります。取得できないときは手動で入力してください。</p>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head"><h2>予想収益（概算）</h2></div>
+        <div class="panel-body">
+          <div class="sc-result">
+            <div class="sc-cell sc-primary">
+              <span class="sc-label">月間の広告収益（目安）</span>
+              <span class="sc-num"><span id="crMonLow">¥5,000</span> 〜 <span id="crMonHigh">¥50,000</span></span>
+            </div>
+            <div class="sc-cell" style="grid-column:1 / -1">
+              <span class="sc-label">年間の広告収益（目安）</span>
+              <span class="sc-num"><span id="crYrLow">¥60,000</span> 〜 <span id="crYrHigh">¥600,000</span></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="ad-slot" aria-label="広告">
+        <!-- BEGIN AADS AD UNIT 2448808 -->
+        <div class="ad-frame-wrap">
+          <iframe data-aa='2448808' src='//acceptable.a-ads.com/2448808/?size=Adaptive' title='広告'
+                            class='ad-frame'></iframe>
+        </div>
+        <!-- END AADS AD UNIT 2448808 -->
+      </aside>
+
+      <section class="panel">
+        <h2>予想収益の出し方</h2>
+        <p>
+          このツールは「<strong>月間再生数 ÷ 1,000 × RPM</strong>」で広告収益を概算します。RPM（1,000 再生あたりの収益）は
+          ジャンル・国・季節で大きく変わるため、下限〜上限の<strong>幅</strong>で表示しています。既定値は目安なので、
+          実感に近い値へ自由に調整してください。
+        </p>
+        <p>
+          チャンネル URL を貼ると、公開されている統計（登録者数・総再生数・直近30日の推定再生数）を取得して試算の材料にします。
+          取得は各プラットフォームの公式 API 経由で、HTML の無断取得（スクレイピング）は行いません。
+        </p>
+      </section>
+
+      <section class="panel">
+        <h2>注意事項</h2>
+        <ul>
+          <li>表示額は<strong>予想（概算）</strong>であり、実際の収益・確定額ではありません。</li>
+          <li><strong>広告収益のみ</strong>の目安です。スーパーチャット（スパチャ）・メンバーシップ・企業案件・グッズなどは含みません。</li>
+          <li>本サイトは YouTube・Twitch・TwitCasting および各配信者と<strong>関係ありません</strong>。</li>
+          <li>スパチャの手取りは <a href="/superchat-calculator">スパチャ手取り計算機</a> でも試算できます。仕組みは <a href="/superchat-tesuryo">こちらの解説</a>をどうぞ。</li>
+        </ul>
+      </section>
+
+      <footer class="footer-links">
+        <a href="/superchat-calculator">スパチャ手取り計算機</a>
+        <a href="/superchat-tesuryo">スパチャ手数料の解説</a>
+        <a href="/tools">ツール一覧</a>
+        <a href="/privacy">プライバシーポリシー</a>
+        <a href="/en/channel-revenue" hreflang="en" lang="en">English</a>
+      </footer>
+    </main>
+
+    <script src="/tools.js" defer></script>
+    <!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1575aefabb554064b56a2098eae2b166"}'></script><!-- End Cloudflare Web Analytics -->
+  </body>
+</html>

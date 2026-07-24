@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5206748133579380" crossorigin="anonymous"></script>
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#e7eef7" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#101726" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>Streamer Revenue Estimator | Estimate Earnings from a Channel URL</title>
+    <meta
+      name="description"
+      content="Paste a YouTube, Twitch, or TwitCasting channel URL to estimate monthly and yearly ad revenue from public stats. Adjustable RPM. Estimates only — not actual earnings and not affiliated with any platform. Runs in your browser."
+    />
+    <meta name="robots" content="index,follow" />
+    <meta name="google-site-verification" content="77MztDN2EmCFP3QrmE3aG4WmQ941w2QQJwKbZX2R0nE" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Streamer Revenue Estimator" />
+    <meta property="og:description" content="Estimate ad revenue from a channel URL (YouTube/Twitch/TwitCasting). Estimates only." />
+    <meta property="og:url" content="https://base64-app-2he.pages.dev/en/channel-revenue" />
+    <meta property="og:image" content="https://base64-app-2he.pages.dev/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Online Converter Tools" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="ja_JP" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="canonical" href="https://base64-app-2he.pages.dev/en/channel-revenue" />
+    <link rel="alternate" hreflang="ja" href="https://base64-app-2he.pages.dev/channel-revenue" />
+    <link rel="alternate" hreflang="en" href="https://base64-app-2he.pages.dev/en/channel-revenue" />
+    <link rel="alternate" hreflang="x-default" href="https://base64-app-2he.pages.dev/channel-revenue" />
+    <link rel="stylesheet" href="/style.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Streamer Revenue Estimator",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Any",
+        "url": "https://base64-app-2he.pages.dev/en/channel-revenue",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "browserRequirements": "JavaScript",
+        "inLanguage": ["ja", "en"],
+        "description": "Free tool to estimate ad revenue from a YouTube/Twitch/TwitCasting channel URL. Estimates only."
+      }
+    </script>
+  </head>
+  <body>
+    <main class="container">
+      <header class="header">
+        <h1>Streamer Revenue Estimator</h1>
+        <p>Paste a YouTube, Twitch, or TwitCasting channel URL to estimate <strong>ad revenue</strong> from public stats. Numbers are editable and everything is calculated in your browser.</p>
+      </header>
+
+      <p class="disclaimer" role="note">
+        ⚠ The figures shown are <strong>estimates</strong> based on an assumed RPM (revenue per 1,000 views). Actual earnings can differ greatly,
+        and this site is <strong>not affiliated</strong> with YouTube, Twitch, or TwitCasting. Super Chats, memberships, and sponsorships are not included.
+      </p>
+
+      <section class="panel">
+        <div class="panel-head"><h2>Channel URL</h2></div>
+        <div class="panel-body">
+          <input id="crUrl" class="sc-input" type="url" inputmode="url" placeholder="e.g. https://www.youtube.com/@example" />
+          <div class="tool-actions" style="margin-top:0.6rem">
+            <button id="crFetchBtn" type="button">Fetch stats &amp; estimate</button>
+          </div>
+          <p id="crDetected" class="cr-detected"></p>
+          <p id="crContext" class="cr-context"></p>
+          <p id="crStatus" class="status" role="status" aria-live="polite"></p>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head"><h2>Estimation inputs</h2></div>
+        <div class="panel-body">
+          <div class="sc-grid">
+            <div class="sc-field">
+              <label for="crMonthlyViews">Monthly views</label>
+              <input id="crMonthlyViews" class="sc-input" type="number" inputmode="numeric" min="0" step="1000" value="100000" />
+            </div>
+            <div class="sc-field">
+              <label>RPM (revenue per 1,000 views, USD)</label>
+              <div style="display:flex;gap:0.5rem;align-items:center">
+                <input id="crRpmLow" class="sc-input" type="number" inputmode="decimal" min="0" step="0.1" value="0.5" aria-label="RPM low" />
+                <span aria-hidden="true">–</span>
+                <input id="crRpmHigh" class="sc-input" type="number" inputmode="decimal" min="0" step="0.1" value="5" aria-label="RPM high" />
+              </div>
+            </div>
+          </div>
+          <p class="hm-note">When stats are auto-fetched, "Monthly views" is filled with the estimated views of the last 30 days. Otherwise, enter it manually.</p>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head"><h2>Estimated revenue</h2></div>
+        <div class="panel-body">
+          <div class="sc-result">
+            <div class="sc-cell sc-primary">
+              <span class="sc-label">Monthly ad revenue (estimate)</span>
+              <span class="sc-num"><span id="crMonLow">$50</span> – <span id="crMonHigh">$500</span></span>
+            </div>
+            <div class="sc-cell" style="grid-column:1 / -1">
+              <span class="sc-label">Yearly ad revenue (estimate)</span>
+              <span class="sc-num"><span id="crYrLow">$600</span> – <span id="crYrHigh">$6,000</span></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="ad-slot" aria-label="Sponsored">
+        <!-- BEGIN AADS AD UNIT 2448808 -->
+        <div class="ad-frame-wrap">
+          <iframe data-aa='2448808' src='//acceptable.a-ads.com/2448808/?size=Adaptive' title='Sponsored'
+                            class='ad-frame'></iframe>
+        </div>
+        <!-- END AADS AD UNIT 2448808 -->
+      </aside>
+
+      <section class="panel">
+        <h2>How the estimate works</h2>
+        <p>
+          This tool estimates ad revenue as "<strong>monthly views ÷ 1,000 × RPM</strong>". RPM (revenue per 1,000 views)
+          varies widely by genre, country, and season, so the result is shown as a <strong>range</strong> (low–high).
+          The defaults are rough guides — adjust them to match your experience.
+        </p>
+        <p>
+          Pasting a channel URL fetches public stats (subscribers, total views, estimated views over the last 30 days)
+          to seed the estimate. Data is retrieved only through each platform's official API — no HTML scraping.
+        </p>
+      </section>
+
+      <section class="panel">
+        <h2>Important notes</h2>
+        <ul>
+          <li>Figures are <strong>estimates</strong>, not actual or confirmed earnings.</li>
+          <li>They cover <strong>ad revenue only</strong> — Super Chats, memberships, sponsorships, and merch are excluded.</li>
+          <li>This site is <strong>not affiliated</strong> with YouTube, Twitch, TwitCasting, or any creator.</li>
+        </ul>
+      </section>
+
+      <footer class="footer-links">
+        <a href="/en/superchat-calculator">Super Chat calculator</a>
+        <a href="/en/tools">All tools</a>
+        <a href="/en/">Base64</a>
+        <a href="/en/privacy">Privacy policy</a>
+        <a href="/channel-revenue?lang=ja" hreflang="ja" lang="ja">日本語</a>
+      </footer>
+    </main>
+
+    <script src="/tools.js" defer></script>
+    <!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1575aefabb554064b56a2098eae2b166"}'></script><!-- End Cloudflare Web Analytics -->
+  </body>
+</html>

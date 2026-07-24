@@ -24,6 +24,8 @@ const JA_TO_EN = {
   "/json-format": "/en/json-format",
   "/hash": "/en/hash",
   "/http-status-codes": "/en/http-status-codes",
+  "/superchat-calculator": "/en/superchat-calculator",
+  "/channel-revenue": "/en/channel-revenue",
 };
 
 // 主要な検索エンジン/SNS のクローラーを判定する（振り分け対象外にする）。
