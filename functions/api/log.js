@@ -1,6 +1,17 @@
 const WINDOW_MS = 60 * 1000;
 const MAX_REQUESTS_PER_WINDOW = 30;
-const MAX_PLAINTEXT_LEN = 10000;
+const MAX_PLAINTEXT_LEN = 100000;
+
+// 記録を許可する操作種別。Base64 に加えて各ツールの操作を受け付ける。
+const ALLOWED_DIRECTIONS = new Set([
+  "encode",
+  "decode",
+  "url-encode",
+  "url-decode",
+  "json-format",
+  "json-minify",
+  "hash",
+]);
 // Prune expired entries once the tracked-IP map grows past this size so the
 // in-memory rate-limit state cannot grow without bound in a long-lived isolate.
 const PRUNE_THRESHOLD = 10000;
@@ -66,7 +77,7 @@ function checkRateLimit(ip) {
 function isValidPayload(payload) {
   const { direction, plaintext } = payload ?? {};
 
-  if (direction !== "encode" && direction !== "decode") {
+  if (typeof direction !== "string" || !ALLOWED_DIRECTIONS.has(direction)) {
     return "Invalid direction";
   }
 

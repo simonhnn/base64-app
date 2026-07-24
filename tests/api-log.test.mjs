@@ -59,6 +59,16 @@ describe("/api/log", () => {
     expect(inserts[0].plaintext).to.equal("hello");
   });
 
+  it("ツールの操作種別（url-encode等）も受け付けて201を返す", async () => {
+    const { env, inserts } = createEnv();
+    const request = buildRequest({ direction: "url-encode", plaintext: "a b" }, "198.51.100.20");
+
+    const response = await onRequest({ request, env });
+
+    expect(response.status).to.equal(201);
+    expect(inserts[0].direction).to.equal("url-encode");
+  });
+
   it("POST以外は405を返す", async () => {
     const { env } = createEnv();
     const request = new Request("https://example.com/api/log", { method: "GET" });
@@ -77,9 +87,9 @@ describe("/api/log", () => {
     expect(response.status).to.equal(400);
   });
 
-  it("plaintextが10000文字超過の場合は400を返す", async () => {
+  it("plaintextが上限(100000文字)超過の場合は400を返す", async () => {
     const { env } = createEnv();
-    const tooLong = "a".repeat(10001);
+    const tooLong = "a".repeat(100001);
     const request = buildRequest({ direction: "encode", plaintext: tooLong }, "198.51.100.12");
 
     const response = await onRequest({ request, env });

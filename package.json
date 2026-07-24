@@ -1,17 +1,27 @@
 {
   "name": "base64-app",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "type": "module",
-  "description": "テキストと Base64 を相互変換するシンプルなウェブアプリです。  \r 変換処理はすべてブラウザ内で完結し、サーバーにはログ収集のみを送信します。",
+  "description": "クライアント完結型のオンライン変換ツール集（Base64 / URL / JSON / ハッシュ）と年齢早見表。Cloudflare Pages + Functions + D1 で動作し、変換処理はすべてブラウザ内で完結します。",
   "main": "index.js",
   "scripts": {
-    "test": "mocha \"tests/**/*.test.mjs\""
+    "test": "mocha \"tests/**/*.test.mjs\"",
+    "dev": "wrangler pages dev public"
   },
   "repository": {
     "type": "git",
     "url": "git+https://simonhnn@github.com/simonhnn/base64-app.git"
   },
-  "keywords": [],
+  "keywords": [
+    "base64",
+    "url-encode",
+    "json-formatter",
+    "hash",
+    "sha256",
+    "converter",
+    "online-tools",
+    "cloudflare-pages"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {

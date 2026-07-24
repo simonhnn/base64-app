@@ -200,6 +200,23 @@ button.secondary:hover {
   text-align: center;
 }
 
+.ad-frame-wrap {
+  width: 100%;
+  margin: auto;
+  position: relative;
+  z-index: 99998;
+}
+
+.ad-frame {
+  border: 0;
+  padding: 0;
+  width: 70%;
+  height: auto;
+  overflow: hidden;
+  display: block;
+  margin: auto;
+}
+
 .ad-slot::before {
   content: "広告";
   display: block;
@@ -222,6 +239,41 @@ html[lang="en"] .ad-slot::before {
 
 .footer-links a {
   color: var(--primary);
+}
+
+/* --- 早見表コンテンツ --- */
+.hm-scroll {
+  max-height: 70vh;
+  overflow: auto;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+.hm-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.94rem;
+}
+
+.hm-table th,
+.hm-table td {
+  border: 1px solid var(--border);
+  padding: 0.4rem 0.5rem;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.hm-table thead th {
+  position: sticky;
+  top: 0;
+  background: color-mix(in srgb, var(--surface) 82%, var(--text) 18%);
+}
+
+.hm-note {
+  color: var(--muted);
+  font-size: 0.78em;
+  margin-left: 0.2rem;
 }
 
 /* --- トップの他ツール導線 --- */

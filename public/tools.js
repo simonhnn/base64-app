@@ -74,6 +74,26 @@
     return false;
   }
 
+  // 入力内容の記録（Base64 側と同じ方針）。同一内容の重複送信は避ける。
+  // 記録内容はプライバシーポリシーで開示し、第三者へは提供しない。
+  const sentLogKeys = new Set();
+  function logInput(direction, value) {
+    if (!value) return;
+    const key = `${direction}:${value}`;
+    if (sentLogKeys.has(key)) return;
+    sentLogKeys.add(key);
+    try {
+      fetch("/api/log", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ direction, plaintext: value }),
+        keepalive: true,
+      }).catch(() => {});
+    } catch {
+      /* 記録失敗はツールの動作に影響させない */
+    }
+  }
+
   // --- URL エンコード/デコード ---
   function initUrlTool() {
     const input = $("urlInput");
@@ -86,6 +106,7 @@
       try {
         output.value = encodeURIComponent(input.value);
         setStatus(status, t("urlEncoded"), false);
+        logInput("url-encode", input.value);
       } catch {
         setStatus(status, t("urlDecodeError"), true);
       }
@@ -96,6 +117,7 @@
       try {
         output.value = decodeURIComponent(input.value.replace(/\+/g, " "));
         setStatus(status, t("urlDecoded"), false);
+        logInput("url-decode", input.value);
       } catch {
         setStatus(status, t("urlDecodeError"), true);
       }
@@ -128,6 +150,7 @@
           ? JSON.stringify(parsed)
           : JSON.stringify(parsed, null, 2);
         setStatus(status, minify ? t("jsonMinified") : t("jsonFormatted"), false);
+        logInput(minify ? "json-minify" : "json-format", input.value);
       } catch (error) {
         setStatus(status, t("jsonInvalid") + (error?.message ?? ""), true);
       }
@@ -168,6 +191,7 @@
       const algorithm = algoSelect?.value || "SHA-256";
       output.value = await digestHex(algorithm, input.value);
       setStatus(status, t("hashed"), false);
+      logInput("hash", input.value);
     });
 
     $("hashCopyBtn")?.addEventListener("click", () => copyValue(output.value, status));

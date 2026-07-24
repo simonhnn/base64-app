@@ -72,8 +72,12 @@
       <section class="panel">
         <h2>取得する情報</h2>
         <p>
-          変換方向（encode/decode）と、Base64 ではない側の文字列（平文側）を保存します。
+          サービス改善のため、各ツールでの操作種別（例: Base64 の encode/decode、URL エンコード/デコード、
+          JSON 整形/圧縮、ハッシュ生成）と、利用者が入力した内容を保存します。
+          Base64 変換では、Base64 ではない側の文字列（平文側）を保存します。
         </p>
+        <p>
+          パスワードや秘密鍵など、他人に知られてはいけない情報の入力はお控えください。</p>
       </section>
 
       <section class="panel">
@@ -91,7 +95,20 @@
       <section class="panel">
         <h2>広告の表示</h2>
         <p>
-          当サイトでは運営費用をまかなうため、第三者配信の広告サービス「A-ADS（Anonymous Ads）」を利用しています。広告は a-ads.com から iframe 形式で配信されます。A-ADS はプライバシーを重視した広告ネットワークで、原則として Cookie による追跡や個人を特定する情報の収集を行いません。ただし広告の読み込みに伴い、IP アドレスやブラウザの種類など、通信上必要な情報が配信元へ送信される場合があります。
+          当サイトでは運営費用をまかなうため、第三者配信の広告サービスを利用しています。
+        </p>
+        <p>
+          <strong>Google AdSense</strong>: 第三者配信事業者である Google は Cookie を使用して、
+          利用者の当サイトや他サイトへのアクセス情報に基づいた広告を配信することがあります。
+          利用者は <a href="https://adssettings.google.com/" rel="nofollow noopener" target="_blank">広告設定</a>
+          でパーソナライズ広告を無効にできます。詳細は
+          <a href="https://policies.google.com/technologies/ads" rel="nofollow noopener" target="_blank">Google のポリシー</a>
+          をご確認ください。
+        </p>
+        <p>
+          <strong>A-ADS（Anonymous Ads）</strong>: a-ads.com から iframe 形式で配信されます。原則として Cookie による
+          追跡や個人を特定する情報の収集を行いませんが、広告の読み込みに伴い、IP アドレスやブラウザの種類など
+          通信上必要な情報が配信元へ送信される場合があります。
         </p>
       </section>
 
@@ -102,9 +119,9 @@
 
       <aside class="ad-slot" aria-label="広告">
         <!-- BEGIN AADS AD UNIT 2448808 -->
-        <div id="frame" style="width: 100%;margin: auto;position: relative; z-index: 99998;">
+        <div class="ad-frame-wrap">
           <iframe data-aa='2448808' src='//acceptable.a-ads.com/2448808/?size=Adaptive' title='広告'
-                            style='border:0; padding:0; width:70%; height:auto; overflow:hidden;display: block;margin: auto'></iframe>
+                            class='ad-frame'></iframe>
         </div>
         <!-- END AADS AD UNIT 2448808 -->
       </aside>
