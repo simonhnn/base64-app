@@ -296,6 +296,18 @@ html[lang="en"] .ad-slot::before {
   background: color-mix(in srgb, var(--danger) 12%, var(--surface) 88%);
 }
 
+/* --- 干支表: 生まれ年セルは折り返し・左寄せ --- */
+.eto-table td.eto-years {
+  white-space: normal;
+  text-align: left;
+  line-height: 1.9;
+}
+
+.eto-table td:first-child {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
 .sc-table td code {
   font: inherit;
 }
