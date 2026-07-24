@@ -291,6 +291,11 @@ html[lang="en"] .ad-slot::before {
   scroll-margin-top: 4.5rem;
 }
 
+/* --- 厄年表: 本厄行を強調 --- */
+.yk-table tr.honyaku td {
+  background: color-mix(in srgb, var(--danger) 12%, var(--surface) 88%);
+}
+
 .sc-table td code {
   font: inherit;
 }
